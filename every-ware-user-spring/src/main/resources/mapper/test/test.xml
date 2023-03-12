@@ -6,6 +6,6 @@
 	<select id="test" resultType="java.lang.Integer">
 		/* test */
 		SELECT
-			1
+			2
 	</select>
 </mapper>

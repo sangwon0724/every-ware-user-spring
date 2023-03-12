@@ -7,16 +7,4 @@
     <context:component-scan base-package="com.solution.groupware">
        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Controller" />
     </context:component-scan>
-	
-	<!-- Tiles START -->
-    <bean id="tilesViewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-        <property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView" />
-        <property name="order" value="1" />
-   	</bean>    
-   	
-	<bean id="tilesConfigurer" class="org.springframework.web.servlet.view.tiles3.TilesConfigurer" >
-		<property name="definitions" value="classpath:config/spring/context-layouts.xml"/>
-		<property name="preparerFactoryClass" value="org.springframework.web.servlet.view.tiles3.SpringBeanPreparerFactory"/>
-	</bean>
-	<!-- Tiles END -->
 </beans>
