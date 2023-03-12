@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>	
+	<definition name="tiles_main" template="/WEB-INF/views/layout/layout.jsp">
+		<put-attribute name="head" value="/WEB-INF/views/layout/head.jsp" />
+		<put-attribute name="nav" value="/WEB-INF/views/layout/nav.jsp" />
+        <put-attribute name="content" value="" />
+		<put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
+	</definition>
+
+    <!-- 외부 Thub 기본 프레임 출력 -->
+    <definition name="*.main" extends="tiles_main">
+        <put-attribute name="content" value="/WEB-INF/views/main/{1}.jsp" />
+    </definition>
+</tiles-definitions>
