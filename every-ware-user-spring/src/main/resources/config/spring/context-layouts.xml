@@ -2,15 +2,107 @@
 <!DOCTYPE tiles-definitions PUBLIC "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
 
 <tiles-definitions>	
-	<definition name="tiles_main" template="/WEB-INF/views/layout/layout.jsp">
+	<definition name="common_tiles" template="/WEB-INF/views/layout/layout.jsp">
 		<put-attribute name="head" value="/WEB-INF/views/layout/head.jsp" />
+		<put-attribute name="header" value="/WEB-INF/views/layout/header.jsp" />
 		<put-attribute name="nav" value="/WEB-INF/views/layout/nav.jsp" />
         <put-attribute name="content" value="" />
 		<put-attribute name="footer" value="/WEB-INF/views/layout/footer.jsp" />
 	</definition>
 
-    <!-- 외부 Thub 기본 프레임 출력 -->
-    <definition name="*.main" extends="tiles_main">
+    <!-- 메인 -->
+    <definition name="*.main" extends="common_tiles">
         <put-attribute name="content" value="/WEB-INF/views/main/{1}.jsp" />
+    </definition>
+    <definition name="*/*.main" extends="common_tiles">
+        <put-attribute name="contents" value="/WEB-INF/views/main/{1}/{2}.jsp" />
+    </definition>
+
+    <!-- 사용자 -->
+    <definition name="*.user" extends="common_tiles">
+        <put-attribute name="content" value="/WEB-INF/views/user/{1}.jsp" />
+    </definition>
+    <definition name="*/*.user" extends="common_tiles">
+        <put-attribute name="contents" value="/WEB-INF/views/user/{1}/{2}.jsp" />
+    </definition>
+    <definition name="*/*/*.user" extends="common_tiles">
+        <put-attribute name="contents" value="/WEB-INF/views/user/{1}/{2}/{3}.jsp" />
+    </definition>
+
+    <!-- 업무연락 -->
+    <definition name="*.contact" extends="common_tiles">
+        <put-attribute name="content" value="/WEB-INF/views/contact/{1}.jsp" />
+    </definition>
+    <definition name="*/*.contact" extends="common_tiles">
+        <put-attribute name="contents" value="/WEB-INF/views/contact/{1}/{2}.jsp" />
+    </definition>
+    <definition name="*/*/*.contact" extends="common_tiles">
+        <put-attribute name="contents" value="/WEB-INF/views/contact/{1}/{2}/{3}.jsp" />
+    </definition>
+
+    <!-- 전자결재 -->
+    <definition name="*.paperwork" extends="common_tiles">
+        <put-attribute name="content" value="/WEB-INF/views/paperwork/{1}.jsp" />
+    </definition>
+    <definition name="*/*.paperwork" extends="common_tiles">
+        <put-attribute name="contents" value="/WEB-INF/views/paperwork/{1}/{2}.jsp" />
+    </definition>
+    <definition name="*/*/*.paperwork" extends="common_tiles">
+        <put-attribute name="contents" value="/WEB-INF/views/paperwork/{1}/{2}/{3}.jsp" />
+    </definition>
+
+    <!-- 일정관리 -->
+    <definition name="*.schedule" extends="common_tiles">
+        <put-attribute name="content" value="/WEB-INF/views/schedule/{1}.jsp" />
+    </definition>
+    <definition name="*/*.schedule" extends="common_tiles">
+        <put-attribute name="contents" value="/WEB-INF/views/schedule/{1}/{2}.jsp" />
+    </definition>
+    <definition name="*/*/*.schedule" extends="common_tiles">
+        <put-attribute name="contents" value="/WEB-INF/views/schedule/{1}/{2}/{3}.jsp" />
+    </definition>
+
+    <!-- 게시판 -->
+    <definition name="*.board" extends="common_tiles">
+        <put-attribute name="content" value="/WEB-INF/views/board/{1}.jsp" />
+    </definition>
+    <definition name="*/*.board" extends="common_tiles">
+        <put-attribute name="contents" value="/WEB-INF/views/board/{1}/{2}.jsp" />
+    </definition>
+    <definition name="*/*/*.board" extends="common_tiles">
+        <put-attribute name="contents" value="/WEB-INF/views/board/{1}/{2}/{3}.jsp" />
+    </definition>
+
+    <!-- 자료실 -->
+    <definition name="*.warehouse" extends="common_tiles">
+        <put-attribute name="content" value="/WEB-INF/views/warehouse/{1}.jsp" />
+    </definition>
+    <definition name="*/*.warehouse" extends="common_tiles">
+        <put-attribute name="contents" value="/WEB-INF/views/warehouse/{1}/{2}.jsp" />
+    </definition>
+    <definition name="*/*/*.warehouse" extends="common_tiles">
+        <put-attribute name="contents" value="/WEB-INF/views/warehouse/{1}/{2}/{3}.jsp" />
+    </definition>
+
+    <!-- 프로젝트 관리 -->
+    <definition name="*.project" extends="common_tiles">
+        <put-attribute name="content" value="/WEB-INF/views/project/{1}.jsp" />
+    </definition>
+    <definition name="*/*.project" extends="common_tiles">
+        <put-attribute name="contents" value="/WEB-INF/views/project/{1}/{2}.jsp" />
+    </definition>
+    <definition name="*/*/*.project" extends="common_tiles">
+        <put-attribute name="contents" value="/WEB-INF/views/project/{1}/{2}/{3}.jsp" />
+    </definition>
+
+    <!-- 마이페이지 -->
+    <definition name="*.mypage" extends="common_tiles">
+        <put-attribute name="content" value="/WEB-INF/views/mypage/{1}.jsp" />
+    </definition>
+    <definition name="*/*.mypage" extends="common_tiles">
+        <put-attribute name="contents" value="/WEB-INF/views/mypage/{1}/{2}.jsp" />
+    </definition>
+    <definition name="*/*/*.mypage" extends="common_tiles">
+        <put-attribute name="contents" value="/WEB-INF/views/mypage/{1}/{2}/{3}.jsp" />
     </definition>
 </tiles-definitions>

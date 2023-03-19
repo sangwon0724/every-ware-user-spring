@@ -7,6 +7,7 @@
 <html lang="ko">
 	<tiles:insertAttribute name="head" />
 <body>
+   	<tiles:insertAttribute name="header" />
     <div id="main-wrapper">
     	<tiles:insertAttribute name="nav" />
         <!--**********************************
