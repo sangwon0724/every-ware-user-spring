@@ -19,23 +19,23 @@ import org.springframework.web.bind.annotation.RequestMethod;
  */
 
 @Controller
-@RequestMapping("/paperwork")
+@RequestMapping("/schedule")
 public class ScheduleController {
 	@RequestMapping(value="/all", method=RequestMethod.GET)
 	public String all(HttpServletRequest request) {
 		
-		return "all.paperwork";
+		return "all.schedule";
 	}
 	
 	@RequestMapping(value="/team", method=RequestMethod.GET)
 	public String team(HttpServletRequest request) {
 		
-		return "team.paperwork";
+		return "team.schedule";
 	}
 	
 	@RequestMapping(value="/personal", method=RequestMethod.GET)
 	public String personal(HttpServletRequest request) {
 		
-		return "personal.paperwork";
+		return "personal.schedule";
 	}
 }
