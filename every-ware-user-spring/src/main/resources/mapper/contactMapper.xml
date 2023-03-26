@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solution.groupware.mapper.ContactMapper">
+
+	<!-- 게시글 목록 조회  -->
+	<select id="selectReceiveList" parameterType="hashmap" resultType="ContactVO">
+		/* selectPost */
+		SELECT
+			CI.CONTACT_IDX,
+			CI.TITLE,
+			CI.USER_IDX AS WRITER_USER_IDX,
+			UI.NAME AS WRITER_USER_NAME,
+			0 AS READ_COUNT,
+			0 AS SEND_COUNT,
+			CI.REG_DATE
+		FROM
+			CONTACT_INFO CI
+			INNER JOIN USER_INFO UI
+				ON CI.USER_IDX = UI.USER_IDX
+		WHERE
+			1=1
+			<if test='mode != null and mode=="receive"'>
+				/* AND 수신대상 나 */
+				AND CI.USE_YN = 'Y'
+			</if>
+		ORDER BY
+			CI.CONTACT_IDX DESC
+	</select>
+
+	<!-- 게시글 목록 조회  -->
+	<select id="selectSendList" parameterType="hashmap" resultType="ContactVO">
+		/* selectPost */
+		SELECT
+			CI.CONTACT_IDX,
+			CI.TITLE,
+			CI.USER_IDX AS WRITER_USER_IDX,
+			UI.NAME AS WRITER_USER_NAME,
+			0 AS READ_COUNT,
+			0 AS SEND_COUNT,
+			CI.REG_DATE
+		FROM
+			CONTACT_INFO CI
+			INNER JOIN USER_INFO UI
+				ON CI.USER_IDX = UI.USER_IDX
+		WHERE
+			1=1
+			<if test='mode != null and mode=="receive"'>
+				/* AND 수신대상 나 */
+				AND CI.USE_YN = 'Y'
+			</if>
+		ORDER BY
+			CI.CONTACT_IDX DESC
+	</select>
+
+	<!-- 게시글 목록 조회  -->
+	<select id="selectAllList" parameterType="hashmap" resultType="ContactVO">
+		/* selectPost */
+		SELECT
+			CI.CONTACT_IDX,
+			CI.TITLE,
+			CI.USER_IDX AS WRITER_USER_IDX,
+			UI.NAME AS WRITER_USER_NAME,
+			0 AS READ_COUNT,
+			0 AS SEND_COUNT,
+			CI.REG_DATE
+		FROM
+			CONTACT_INFO CI
+			INNER JOIN USER_INFO UI
+				ON CI.USER_IDX = UI.USER_IDX
+		WHERE
+			1=1
+			<if test='mode != null and mode=="receive"'>
+				/* AND 수신대상 나 */
+				AND CI.USE_YN = 'Y'
+			</if>
+		ORDER BY
+			CI.CONTACT_IDX DESC
+	</select>
+
+	<!-- 게시글 목록 조회  -->
+	<select id="selectTrashList" parameterType="hashmap" resultType="ContactVO">
+		/* selectPost */
+		SELECT
+			CI.CONTACT_IDX,
+			CI.TITLE,
+			CI.USER_IDX AS WRITER_USER_IDX,
+			UI.NAME AS WRITER_USER_NAME,
+			0 AS READ_COUNT,
+			0 AS SEND_COUNT,
+			CI.REG_DATE
+		FROM
+			CONTACT_INFO CI
+			INNER JOIN USER_INFO UI
+				ON CI.USER_IDX = UI.USER_IDX
+		WHERE
+			1=1
+			<if test='mode != null and mode=="receive"'>
+				/* AND 수신대상 나 */
+				AND CI.USE_YN = 'Y'
+			</if>
+		ORDER BY
+			CI.CONTACT_IDX DESC
+	</select>
+</mapper>

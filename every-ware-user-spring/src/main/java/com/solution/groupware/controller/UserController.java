@@ -11,6 +11,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import com.solution.groupware.vo.UserVO;
+
 /**
  * @packageName : 	com.solution.groupware.controller
  * @fileName    : 	UserController.java 
@@ -46,7 +48,9 @@ public class UserController {
 		
 		//임시 - 데이터 검증 과정 필요
 		if(map != null) {
-			session.setAttribute("user", "temp");
+			UserVO userVO = new UserVO();
+			userVO.setUserIdx(7);
+			session.setAttribute("user", userVO);
 		}
 
 		//로그인 전의 페이지 주소로 이동

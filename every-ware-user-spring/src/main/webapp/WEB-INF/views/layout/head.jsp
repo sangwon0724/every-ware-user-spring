@@ -6,6 +6,7 @@
 
 	<link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet" type="text/css">
 	<link href="<c:url value="/resources/css/common.css" />" rel="stylesheet" type="text/css">
+	<link href="<c:url value="/resources/css/contact.css" />" rel="stylesheet" type="text/css">
 	
 	<!-- 아이콘 -->
 	<script src="https://kit.fontawesome.com/34a8d510cf.js" crossorigin="anonymous"></script>

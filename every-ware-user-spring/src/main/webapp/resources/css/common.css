@@ -10,6 +10,14 @@ html {
 	min-height: 100vh;
 }
 
+body {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+body::-webkit-scrollbar {
+    display: none; /* Chrome, Safari, Opera*/
+}
+
 /* 숨김 처리 */
 .hidden {
 	display: none;
@@ -24,6 +32,7 @@ html {
 	justify-content: space-between;
 	align-items: center;
 	padding-left: 1.5vw;
+    min-height: 55px;
 }
 
 /* 로고 */
@@ -83,11 +92,14 @@ html {
 
 #common_nav {
 	width : 100vw;
+    min-height: 60px;
 	height: 4.5vh;
 	background-color : #a29bfe;
 	display: flex;
 	justify-content: flex-start;
 	align-items: center;
+	border-top: 3px solid #5F00FF;
+	border-bottom: 3px solid #5F00FF;
 }
 
 #common_nav i {
@@ -106,6 +118,11 @@ html {
   cursor: pointer;
   background-color : #a29bfe;
 }
+
+#common_nav .dropbtn.mydesk{
+	margin-right: 5vw;
+}
+
 #common_nav .dropdown {
   position: relative;
   display: inline-block;
@@ -133,4 +150,11 @@ html {
 }
 #common_nav .dropdown:hover .dropbtn {
 	background-color : #a29bfe;
+ }
+
+/*============================================================================================================*/
+
+ #common-wrapper {
+	 width: 100vw;
+	 height: 91vh;
  }

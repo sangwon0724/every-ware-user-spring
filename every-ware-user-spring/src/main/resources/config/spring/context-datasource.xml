@@ -14,7 +14,7 @@
     <!-- Mysql -->  
     <bean id="dataSourceSpied" class="org.apache.commons.dbcp2.BasicDataSource" destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-        <property name="url" value="jdbc:mysql://localhost:3307/everyware?characterEncoding=UTF-8" />
+        <property name="url" value="jdbc:mysql://localhost:3307/everyware?useSSL=false" />
         <property name="username" value="root"/>
         <property name="password" value="soclsrn0908!"/>
 		<property name="initialSize" value="0"/>
@@ -38,9 +38,14 @@
 	<bean id="sqlSessionFactory" class="com.solution.groupware.setting.RefreshableSqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:/config/spring/context-database.xml" />
-		<property name="mapperLocations" value="classpath:/mapper/**/*.xml" />
+		<property name="mapperLocations" value="classpath:/mapper/*.xml" />
     </bean>
+    
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
+	
+	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
+		<property name="basePackage" value="com.solution.groupware.mapper" />
 	</bean>
 </beans>

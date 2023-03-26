@@ -29,6 +29,8 @@
 	</div>
 </header>
 <nav id="common_nav">
+	<button class="dropbtn mydesk" onclick="command_action(main)">내 책상<i class="fa-solid fa-caret-down"></i></button>
+
 	<div class="dropdown" >
 		 <button class="dropbtn">업무연락<i class="fa-solid fa-caret-down"></i></button>
 		 <div class="dropdown-content">

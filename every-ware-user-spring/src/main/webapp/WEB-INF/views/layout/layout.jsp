@@ -8,17 +8,8 @@
 	<tiles:insertAttribute name="head" />
 <body>
    	<tiles:insertAttribute name="header" />
-    <div id="main-wrapper">
-    	<tiles:insertAttribute name="nav" />
-        <!--**********************************
-            Content body start
-        ***********************************-->
-		<div class="content-body">
-			<tiles:insertAttribute name="content" />
-		</div>
-        <!--**********************************
-            Content body end
-        ***********************************-->
+    <div id="common-wrapper">
+		<tiles:insertAttribute name="content" />
         <tiles:insertAttribute name="footer" />
     </div>
 </body>
