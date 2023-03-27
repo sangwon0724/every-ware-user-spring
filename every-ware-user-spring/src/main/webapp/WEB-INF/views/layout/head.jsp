@@ -6,12 +6,12 @@
     
 	<title>${title}</title>
 
-	<link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet" type="text/css">
+	<%-- <link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet" type="text/css"> --%>
 	<link href="<c:url value="/resources/css/common.css" />" rel="stylesheet" type="text/css">
 	<link href="<c:url value="/resources/css/contact.css" />" rel="stylesheet" type="text/css">
 	
 	<!-- BootStrap -->
-	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
 	
 	<!-- 아이콘 -->
 	<script src="https://kit.fontawesome.com/34a8d510cf.js" crossorigin="anonymous"></script>
@@ -25,7 +25,7 @@
 	<script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
 	
 	<!-- BootStrap -->
-	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
 	
 	<script src="<c:url value="/resources/js/common.js" />" crossorigin="anonymous"></script>
 </head>
