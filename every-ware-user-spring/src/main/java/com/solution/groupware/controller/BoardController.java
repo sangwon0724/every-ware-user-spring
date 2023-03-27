@@ -2,10 +2,14 @@ package com.solution.groupware.controller;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+
+import com.solution.groupware.service.BoardService;
 
 /**
  * @packageName : 	com.solution.groupware.controller
@@ -21,14 +25,20 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/board")
 public class BoardController {
+	@Autowired
+	private BoardService boardService;
+	
 	@RequestMapping(value="/{category}", method=RequestMethod.GET)
-	public String list(HttpServletRequest request, @PathVariable int category) {
+	public String list(HttpServletRequest request, Model model, @PathVariable int category) throws Exception {
+		
+		model.addAttribute("category", boardService.selectBoardCategory());
+		model.addAttribute("currentCategory", category);
 		
 		return "/board/list";
 	}
 	
 	@RequestMapping(value="/{category}/{no}", method=RequestMethod.GET)
-	public String detail(HttpServletRequest request, @PathVariable int category, @PathVariable int no) {
+	public String detail(HttpServletRequest request, Model model, @PathVariable int category, @PathVariable int no) throws Exception {
 		
 		return "/board/detail";
 	}

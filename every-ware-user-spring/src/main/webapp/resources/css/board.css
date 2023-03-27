@@ -1,0 +1,42 @@
+@charset "UTF-8";
+
+.board-body{
+	display: flex;
+    padding-top: 3vh;
+}
+
+.board-body nav.menu_list{
+	width: 13vw;
+	min-width: 200px;
+}
+
+.board-body nav.menu_list .row{
+    position: sticky;
+    top: 0;
+}
+
+.board-body .content table thead tr{
+	background-color: #f2f2f2;
+}
+
+.board-body .content table tbody tr td a{
+	text-decoration: none;
+}
+
+/*.board-body .content table tr th:not(:nth-child(3)),
+.board-body .content table tr td:not(:nth-child(3))*/
+.board-body .content table tr th:not(:nth-child(2)),
+.board-body .content table tr td:not(:nth-child(2))
+{
+	text-align: center;
+}
+
+.board-body .content{
+	width: 80vw;
+}
+
+
+/* 글쓰기 */
+.board-body .content.write{
+	width: 65vw;
+}
