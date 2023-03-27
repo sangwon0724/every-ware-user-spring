@@ -23,6 +23,13 @@ body::-webkit-scrollbar {
 	display: none;
 }
 
+/* flex center center */
+.flex_cc{
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
 /*============================================================================================================*/
 
 #common_header {
@@ -41,7 +48,9 @@ body::-webkit-scrollbar {
 	font-weight: bold;
 	font-size: 3em;
 	/* color: #8b008b; */
-	color : #a29bfe;
+	/*color : #a29bfe;*/
+	/*color: black;*/
+	color: #0d6efd !important;
 	cursor: pointer;
 }
 
@@ -87,72 +96,6 @@ body::-webkit-scrollbar {
 	width: 5vh;
 	height: 5vh;
 }
-
-/*============================================================================================================*/
-
-#common_nav {
-	width : 100vw;
-    min-height: 60px;
-	height: 4.5vh;
-	background-color : #a29bfe;
-	display: flex;
-	justify-content: flex-start;
-	align-items: center;
-	border-top: 3px solid #5F00FF;
-	border-bottom: 3px solid #5F00FF;
-}
-
-#common_nav i {
-	margin-left: 5px;
-}
-
-#common_nav .dropbtn {
-	margin-left: 7px;
-}
-
-#common_nav .dropbtn {
-  color: white;
-  padding: 16px;
-  font-size: 16px;
-  border: none;
-  cursor: pointer;
-  background-color : #a29bfe;
-}
-
-#common_nav .dropbtn.mydesk{
-	margin-right: 5vw;
-}
-
-#common_nav .dropdown {
-  position: relative;
-  display: inline-block;
-  z-index: 998;
-}
-#common_nav .dropdown-content {
-  display: none;
-  position: absolute;
-  min-width: 160px;
-  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-  z-index: 999;
-}
-#common_nav .dropdown-content a {
-  color: black;
-  padding: 12px 16px;
-  text-decoration: none;
-  display: block;
-  background-color: white;
-}
-#common_nav .dropdown-content a:hover {
-	background-color: #f1f1f1;
-}
-#common_nav .dropdown:hover .dropdown-content {
-  display: block;
-}
-#common_nav .dropdown:hover .dropbtn {
-	background-color : #a29bfe;
- }
-
-/*============================================================================================================*/
 
  #common-wrapper {
 	 width: 100vw;

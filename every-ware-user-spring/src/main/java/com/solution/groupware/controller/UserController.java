@@ -36,7 +36,7 @@ public class UserController {
 		String referer = request.getHeader("Referer");
 		request.getSession().setAttribute("redirectURI", referer);
 		
-		return "login.user";
+		return "/user/login";
 	}
 	
 	//login-post
@@ -54,7 +54,7 @@ public class UserController {
 		}
 
 		//로그인 전의 페이지 주소로 이동
-		return "redirect:"+(String) session.getAttribute("redirectURI");
+		return "redirect:/";
 	}
 	
 	//logout
@@ -69,6 +69,6 @@ public class UserController {
 		session.invalidate();
 	   
 		//로그아웃 하기 전의 페이지 주소로 이동
-		return "redirect:"+referer;
+		return "redirect:/";
 	}
 }

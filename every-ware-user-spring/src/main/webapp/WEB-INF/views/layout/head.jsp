@@ -4,7 +4,7 @@
 	<meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     
-	<title>${title}</title>
+	<title>EveryWare</title>
 
 	<%-- <link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet" type="text/css"> --%>
 	<link href="<c:url value="/resources/css/common.css" />" rel="stylesheet" type="text/css">

@@ -14,23 +14,34 @@ public class ContactService {
 	@Autowired
 	private ContactMapper contactMapper;
 	
-	//게시글 목록
+	//수신함 목록 조회
 	public List<ContactVO> selectReceiveList(HashMap<String, Object> param) throws Exception {
 		return contactMapper.selectReceiveList(param);
 	};
 	
-	//게시글 목록
+	//읽음 처리
+	public void updateReadStatus(HashMap<String, Object> param) throws Exception {
+		contactMapper.updateReadStatus(param);
+	}; 
+	
+	//송신함 목록
 	public List<ContactVO> selectSendList(HashMap<String, Object> param) throws Exception {
 		return contactMapper.selectSendList(param);
 	};
 	
-	//게시글 목록
+	//전체함 목록
 	public List<ContactVO> selectAllList(HashMap<String, Object> param) throws Exception {
 		return contactMapper.selectAllList(param);
 	};
 	
-	//게시글 목록
+	//휴지통 목록
 	public List<ContactVO> selectTrashList(HashMap<String, Object> param) throws Exception {
 		return contactMapper.selectTrashList(param);
 	};
+	
+	//게시글 추가
+	public void insertPost(HashMap<String, Object> param) throws Exception {
+		contactMapper.insertPost(param);
+		contactMapper.insertStatus(param);
+	}
 }
