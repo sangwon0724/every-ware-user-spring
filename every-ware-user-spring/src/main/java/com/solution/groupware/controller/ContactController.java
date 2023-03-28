@@ -48,23 +48,6 @@ public class ContactController {
 		return "receive.contact";
 	}
 	
-	@RequestMapping(value="/receive/detail", method=RequestMethod.GET)
-	public String receiveDetail(HttpServletRequest request, Model model, @RequestParam("idx") Integer idx) throws Exception {
-		HttpSession session = request.getSession();
-		UserVO userVO = (UserVO) session.getAttribute("user");
-		int userIdx = userVO.getUserIdx();
-		
-		HashMap<String, Object> param = new HashMap<String, Object>();
-		param.put("userIdx", userIdx);
-		param.put("contactIdx", idx);
-		
-		contactService.updateReadStatus(param); //읽음 처리
-		
-		//model.addAttribute("list", contactService.selectReceiveList(param));
-		
-		return "detail.contact";
-	}
-	
 	@RequestMapping(value="/send", method=RequestMethod.GET)
 	public String send(HttpServletRequest request, Model model) throws Exception {
 		HttpSession session = request.getSession();
@@ -135,5 +118,22 @@ public class ContactController {
 		contactService.insertPost(param); //읽음 처리
 		
 		return "redirect:/contact/send";
+	}
+	
+	@RequestMapping(value="/{category}/detail/{idx}", method=RequestMethod.GET)
+	public String detail(HttpServletRequest request, Model model, @PathVariable String category, @PathVariable Integer idx) throws Exception {
+		HttpSession session = request.getSession();
+		UserVO userVO = (UserVO) session.getAttribute("user");
+		int userIdx = userVO.getUserIdx();
+		
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("idx", idx);
+		
+		contactService.updateReadStatus(param); //읽음 처리
+		
+		model.addAttribute("category", category);
+		model.addAttribute("detail", contactService.selectContactDetail(param));
+		
+		return "detail.contact";
 	}
 }

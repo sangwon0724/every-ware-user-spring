@@ -11,6 +11,7 @@ public interface ContactMapper {
 	public List<ContactVO> selectSendList(HashMap<String, Object> param) throws Exception; //게시글 목록
 	public List<ContactVO> selectAllList(HashMap<String, Object> param) throws Exception; //게시글 목록
 	public List<ContactVO> selectTrashList(HashMap<String, Object> param) throws Exception; //게시글 목록
+	public ContactVO selectContactDetail(HashMap<String, Object> param) throws Exception; //상세 조회
 	
 	//insert
 	public void insertPost(HashMap<String, Object> param) throws Exception; //게시글 추가

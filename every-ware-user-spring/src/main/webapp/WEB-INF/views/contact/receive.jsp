@@ -40,9 +40,9 @@
 			<tbody>
 				<c:forEach items="${list}" var="item">
 					<tr>
-						<td><input type="checkbox" contact-seq="${item.contactIdx}"/></td>
+						<td><input type="checkbox" contact-seq="${item.idx}"/></td>
 						<!-- <td><i class="fa-solid fa-floppy-disk"></i></td> -->
-						<td><a href="/contact/receive/detail?idx=${item.contactIdx}">${item.title}</a></td>
+						<td><a href="/contact/receive/detail/${item.idx}">${item.title}</a></td>
 						<td>${item.writerUserName}</td>
 						<td>${item.readCount} / ${item.sendCount}</td>
 						<td>${item.regDate}</td>

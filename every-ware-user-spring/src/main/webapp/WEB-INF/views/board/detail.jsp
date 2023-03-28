@@ -22,64 +22,17 @@
 			</nav>
 			
 			<div class="content">
-				<table class="table table-hover table-bordered border-primary align-middle">
-					<colgroup>
-						<col width="3%">
-						<col width="5%">
-						<col width="*">
-						<col width="10%">
-						<col width="10%">
-						<col width="15%">
-					</colgroup>
-					<thead>
-						<tr>
-							<th><input type="checkbox" id="all_check"/></th>
-							<th>번호</th>
-							<th>제목</th>
-							<th>작성자</th>
-							<th>작성일자</th>
-							<th>조회수</th>
-						</tr>
-					</thead>
-					<tbody>
-						<c:forEach items="${list}" var="item">
-							<tr>
-								<td><input type="checkbox" board-seq="${item.boardIdx}"/></td>
-								<td>234</td>
-								<td><a href="/contact/receive/detail?idx=${item.boardIdx}">${item.title}</a></td>
-								<td>${item.writerUserName}</td>
-								<td>${item.readCount} / ${item.sendCount}</td>
-								<td>${item.regDate}</td>
-							</tr>
-						</c:forEach>
-						<c:if test="${empty list or fn:length(list) eq 0}">
-							<tr>
-								<td colspan="6">
-									데이터가 존재하지 않습니다.
-								</td>
-							</tr>
-						</c:if>
-					</tbody>
-				</table>
+				<article class="blog-post">
+			        <h2 class="blog-post-title">${detail.title}</h2>
+			        
+			        <p class="blog-post-meta">작성자 : ${detail.writerUserName}</p>
 			
-				<footer aria-label="...">
-				  <ul class="pagination flex_cc">
-				    <!-- <li class="page-item">
-				      <a class="page-link" href="#" aria-label="Previous">
-				        <span aria-hidden="true">&laquo;</span>
-				      </a>
-				    </li> -->
-				    <li class="page-item active"><a class="page-link" href="#">1</a></li>
-				    <!-- <li class="page-item"><a class="page-link" href="#">2</a></li>
-				    <li class="page-item"><a class="page-link" href="#">3</a></li>
-				    <li class="page-item">
-				      <a class="page-link" href="#" aria-label="Next">
-				        <span aria-hidden="true">&raquo;</span>
-				      </a>
-				    </li> -->
-				  </ul>
-				  <a href="/board/write/${currentCategory}" class="btn btn-primary">로그아웃</a>
-				</footer>
+			        <div class="container-md p-3 mt-3 mb-3 border bg-light" style="background: white !important;">
+			        	<c:out value="${detail.content}" escapeXml="false" />
+			        </div>
+			        
+			        <p class="blog-post-meta">작성일시 : ${detail.regDate}</p>
+			      </article>
 			</div>
 		</main>
     </div>

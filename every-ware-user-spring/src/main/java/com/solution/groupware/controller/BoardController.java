@@ -1,6 +1,9 @@
 package com.solution.groupware.controller;
 
+import java.util.HashMap;
+
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -10,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.solution.groupware.service.BoardService;
+import com.solution.groupware.vo.BoardVO;
+import com.solution.groupware.vo.UserVO;
 
 /**
  * @packageName : 	com.solution.groupware.controller
@@ -37,11 +42,18 @@ public class BoardController {
 		return "/board/write";
 	}
 	
-	@RequestMapping(value="/save", method=RequestMethod.GET)
-	public String save(HttpServletRequest request, Model model) throws Exception {
+	@RequestMapping(value="/save", method=RequestMethod.POST)
+	public String save(HttpServletRequest request, Model model, BoardVO data) throws Exception {
 		String category = request.getParameter("categoryIdx");
+
+		HttpSession session = request.getSession();
+		UserVO userVO = (UserVO) session.getAttribute("user");
+		int userIdx = userVO.getUserIdx();
+		
+		data.setUserIdx(userIdx);
 		
 		//저장
+		boardService.insertPost(data);
 
 		return "redirect:/board/" + category;
 	}
@@ -49,22 +61,29 @@ public class BoardController {
 	@RequestMapping(value="/{category}", method=RequestMethod.GET)
 	public String list(HttpServletRequest request, Model model, @PathVariable int category) throws Exception {
 		
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("categoryIdx", category);
+		
 		model.addAttribute("category", boardService.selectBoardCategory());
 		model.addAttribute("currentCategory", category);
 		
-		//게시글 목록 조회
+		model.addAttribute("list", boardService.selectBoardList(param));
 		
 		return "/board/list";
 	}
 	
-	@RequestMapping(value="/{category}/{no}", method=RequestMethod.GET)
-	public String detail(HttpServletRequest request, Model model, @PathVariable int category, @PathVariable int no) throws Exception {
+	@RequestMapping(value="/{category}/{idx}", method=RequestMethod.GET)
+	public String detail(HttpServletRequest request, Model model, @PathVariable int category, @PathVariable int idx) throws Exception {
+		
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("idx", idx);
 
+		boardService.addView(param); //조회수 증가
 		
 		model.addAttribute("category", boardService.selectBoardCategory());
 		model.addAttribute("currentCategory", category);
 		
-		//게시글 상세 조회
+		model.addAttribute("detail", boardService.selectBoardDetail(param));
 		
 		return "/board/detail";
 	}

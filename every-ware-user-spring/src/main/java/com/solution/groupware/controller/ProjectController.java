@@ -1,9 +1,12 @@
 package com.solution.groupware.controller;
 
+import java.util.HashMap;
+
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
-
+import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -27,12 +30,40 @@ public class ProjectController {
 		return "dashboard.project";
 	}
 	
+	@RequestMapping(value="/list", method=RequestMethod.GET)
+	public String list(HttpServletRequest request) {
+		
+		return "/project/list";
+	}
+	
+	@RequestMapping(value="/write/project", method=RequestMethod.GET)
+	public String writeProject(HttpServletRequest request) {
+		
+		return "/project/write_project";
+	}
+	
 	@RequestMapping(value="/work", method=RequestMethod.GET)
 	public String work(HttpServletRequest request) {
 		
-		return "work.project";
+		return "/project/work";
 	}
 	
+	@RequestMapping(value= {"/write/work", "/write/work/{project}"}, method=RequestMethod.GET)
+	public String writeWork(HttpServletRequest request, Model model, @PathVariable(required = false) Integer project) throws Exception {
+		System.out.println("테스트");
+		
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("projectIdx", project);
+		
+		//model.addAttribute("category", boardService.selectBoardCategory());
+		model.addAttribute("currentProject", project);
+		
+		//model.addAttribute("detail", boardService.selectBoardDetail(param));
+		
+		return "/project/write_work";
+	}
+	
+	//회계
 	@RequestMapping(value="/accounting", method=RequestMethod.GET)
 	public String accounting(HttpServletRequest request) {
 		

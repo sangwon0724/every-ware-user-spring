@@ -24,16 +24,14 @@
 			<div class="content">
 				<table class="table table-hover table-bordered border-primary align-middle">
 					<colgroup>
-						<col width="3%">
-						<col width="5%">
+						<col width="10%">
 						<col width="*">
 						<col width="10%">
-						<col width="10%">
 						<col width="15%">
+						<col width="10%">
 					</colgroup>
 					<thead>
 						<tr>
-							<th><input type="checkbox" id="all_check"/></th>
 							<th>번호</th>
 							<th>제목</th>
 							<th>작성자</th>
@@ -44,17 +42,16 @@
 					<tbody>
 						<c:forEach items="${list}" var="item">
 							<tr>
-								<td><input type="checkbox" board-seq="${item.boardIdx}"/></td>
-								<td>234</td>
-								<td><a href="/contact/receive/detail?idx=${item.boardIdx}">${item.title}</a></td>
+								<td>${item.idx}</td>
+								<td><a href="/board/${currentCategory}/${item.idx}">${item.title}</a></td>
 								<td>${item.writerUserName}</td>
-								<td>${item.readCount} / ${item.sendCount}</td>
 								<td>${item.regDate}</td>
+								<td>${item.views}</td>
 							</tr>
 						</c:forEach>
 						<c:if test="${empty list or fn:length(list) eq 0}">
 							<tr>
-								<td colspan="6">
+								<td colspan="5">
 									데이터가 존재하지 않습니다.
 								</td>
 							</tr>

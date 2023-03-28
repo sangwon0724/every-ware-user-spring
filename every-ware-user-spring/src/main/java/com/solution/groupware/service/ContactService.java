@@ -44,4 +44,9 @@ public class ContactService {
 		contactMapper.insertPost(param);
 		contactMapper.insertStatus(param);
 	}
+	
+	//게시글 조회
+	public ContactVO selectContactDetail(HashMap<String, Object> param) throws Exception {
+		return contactMapper.selectContactDetail(param);
+	}; //상세 조회
 }

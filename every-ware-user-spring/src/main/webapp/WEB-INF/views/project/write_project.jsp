@@ -8,7 +8,7 @@
 <body>
 	<c:import url="../layout/header.jsp"/>
     <div id="common-wrapper">
-    	<main class="container-fluid board-body">
+    	<main class="container-fluid project-body">
 			<nav class="menu_list">
 				<div class="row">
 				  <div class="col-10">

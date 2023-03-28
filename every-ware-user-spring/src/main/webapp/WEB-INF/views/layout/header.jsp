@@ -5,10 +5,10 @@
 	<div class="panel">
 		<c:choose>
 			<c:when test="${empty sessionScope.user}">
-				<button type="button" class="btn btn-primary" onclick="login()">로그인</button>
+				<button type="button" class="btn btn-primary me-3" onclick="login()">로그인</button>
 			</c:when>
 			<c:when test="${not empty sessionScope.user}">
-				<div class="tiles">
+				<!-- <div class="tiles">
 					<div class="desc">
 						<span>[소속]</span>
 					</div>
@@ -18,8 +18,8 @@
 					<div class="profile_img">
 						<img src="" onerror="this.remove ? this.remove() : this.removeNode();"/>
 					</div>
-				</div>
-				<button type="button" class="btn btn-primary" onclick="logout()">로그아웃</button>
+				</div> -->
+				<button type="button" class="btn btn-primary me-3" onclick="logout()">로그아웃</button>
 			</c:when>
 		</c:choose>
 	</div>
@@ -78,8 +78,9 @@
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
 		    <li><a class="dropdown-item" href="/project/dashboard">프로젝트 현황</a></li>
-		    <li><a class="dropdown-item" href="/project/work">프로젝트 투입</a></li>
-		    <li><a class="dropdown-item" href="/project/accounting">프로젝트 회계</a></li>
+		    <li><a class="dropdown-item" href="/project/list">프로젝트 관리</a></li>
+		    <li><a class="dropdown-item" href="/project/work">프로젝트 일감</a></li>
+		    <!-- <li><a class="dropdown-item" href="/project/accounting">프로젝트 회계</a></li> -->
           </ul>
         </li>
         <li class="nav-item dropdown">

@@ -13,9 +13,8 @@
 				<div class="row">
 				  <div class="col-10">
 				    <div class="list-group" id="list-tab" role="tablist">
-			      		<a class="list-group-item list-group-item-action${empty currentProject ? ' active' : ''}" id="list-home-list" href="/project/work" role="tab">전체</a>
 				    	<c:forEach items="${category}" var="item">
-				      		<a class="list-group-item list-group-item-action${currentCategory eq item.categoryIdx ? ' active' : ''}" id="list-home-list" href="/project/work/${item.idx}" role="tab">${item.name}</a>
+				      		<a class="list-group-item list-group-item-action${currentCategory eq item.categoryIdx ? ' active' : ''}" id="list-home-list" href="/board/${item.categoryIdx}" role="tab">${item.name}</a>
 				    	</c:forEach>
 				    </div>
 				  </div>
@@ -27,17 +26,17 @@
 					<colgroup>
 						<col width="10%">
 						<col width="*">
-						<col width="20%">
 						<col width="10%">
 						<col width="15%">
+						<col width="10%">
 					</colgroup>
 					<thead>
 						<tr>
 							<th>번호</th>
 							<th>제목</th>
-							<th>프로젝트</th>
 							<th>작성자</th>
 							<th>작성일자</th>
+							<th>조회수</th>
 						</tr>
 					</thead>
 					<tbody>
@@ -76,7 +75,7 @@
 				      </a>
 				    </li> -->
 				  </ul>
-				  <a href="/project/write/work${not empty currentProject ? '/' : ''}${currentProject}" class="btn btn-primary">일감 등록</a>
+				  <a href="/project/write/project" class="btn btn-primary">프로젝트 등록</a>
 				</footer>
 			</div>
 		</main>
