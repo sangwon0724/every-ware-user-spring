@@ -30,7 +30,8 @@ public class BoardController {
 	
 	@RequestMapping(value="/write/{category}", method=RequestMethod.GET)
 	public String write(HttpServletRequest request, Model model, @PathVariable int category) throws Exception {
-		
+
+		model.addAttribute("category", boardService.selectBoardCategory());
 		model.addAttribute("currentCategory", category);
 		
 		return "/board/write";

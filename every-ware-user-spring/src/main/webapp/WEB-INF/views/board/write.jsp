@@ -28,15 +28,12 @@
 					  <input type="email" class="form-control" id="title" name="title" placeholder="제목을 입력해주세요.">
 					</div>
 					<div class="mb-3">
-					  	<label for="receiver" class="form-label">수신대상</label>
-						<select class="form-select" aria-label="Default select example" id="receiveUserIdx" name="receiveUserIdx">
-						  <option value="" selected>수신대상을 선택해주세요.</option>
-						  <option value="1">손경배 팀장</option>
-						  <option value="2">김채원 대리</option>
-						  <option value="3">인진교 실장</option>
-						  <option value="4">이희규 상무</option>
-						  <option value="5">송민수 팀장</option>
-						  <option value="6">전진우 대리</option>
+					  	<label for="receiver" class="form-label">카테고리</label>
+						<select class="form-select" aria-label="Default select example" id="categoryIdx" name="categoryIdx">
+						  <option value="" selected>게시글 유형을 선택해주세요.</option>
+					    	<c:forEach items="${category}" var="item">
+					      		<option value="${item.categoryIdx}">${item.name}</option>
+					    	</c:forEach>
 						</select>
 					</div>
 					<div class="mb-3">
