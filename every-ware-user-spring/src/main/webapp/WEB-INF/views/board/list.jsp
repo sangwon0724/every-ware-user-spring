@@ -78,7 +78,7 @@
 				      </a>
 				    </li> -->
 				  </ul>
-				  <a href="/board/write/${currentCategory}" class="btn btn-primary">로그아웃</a>
+				  <a href="/board/write/${currentCategory}" class="btn btn-primary">글쓰기</a>
 				</footer>
 			</div>
 		</main>
