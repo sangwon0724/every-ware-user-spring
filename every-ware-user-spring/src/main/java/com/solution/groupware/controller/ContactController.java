@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -33,8 +35,7 @@ public class ContactController {
 	@Autowired
 	private ContactService contactService;
 	
-	
-	@RequestMapping(value="/receive", method=RequestMethod.GET)
+	@GetMapping("/receive")
 	public String receive(HttpServletRequest request, Model model) throws Exception {
 		HttpSession session = request.getSession();
 		UserVO userVO = (UserVO) session.getAttribute("user");
@@ -48,7 +49,7 @@ public class ContactController {
 		return "receive.contact";
 	}
 	
-	@RequestMapping(value="/send", method=RequestMethod.GET)
+	@GetMapping("/send")
 	public String send(HttpServletRequest request, Model model) throws Exception {
 		HttpSession session = request.getSession();
 		UserVO userVO = (UserVO) session.getAttribute("user");
@@ -62,7 +63,7 @@ public class ContactController {
 		return "send.contact";
 	}
 	
-	@RequestMapping(value="/all", method=RequestMethod.GET)
+	@GetMapping("/all")
 	public String all(HttpServletRequest request, Model model) throws Exception {
 		HttpSession session = request.getSession();
 		UserVO userVO = (UserVO) session.getAttribute("user");
@@ -76,7 +77,7 @@ public class ContactController {
 		return "all.contact";
 	}
 	
-	@RequestMapping(value="/trash", method=RequestMethod.GET)
+	@GetMapping("/trash")
 	public String trash(HttpServletRequest request, Model model) throws Exception {
 		HttpSession session = request.getSession();
 		UserVO userVO = (UserVO) session.getAttribute("user");
@@ -90,7 +91,7 @@ public class ContactController {
 		return "trash.contact";
 	}
 	
-	@RequestMapping(value="/write", method=RequestMethod.GET)
+	@GetMapping("/write")
 	public String write(HttpServletRequest request, Model model) throws Exception {
 		HttpSession session = request.getSession();
 		UserVO userVO = (UserVO) session.getAttribute("user");
@@ -102,7 +103,7 @@ public class ContactController {
 		return "write.contact";
 	}
 	
-	@RequestMapping(value="/save", method=RequestMethod.POST)
+	@PostMapping("/save")
 	public String save(HttpServletRequest request, Model model) throws Exception {
 		HttpSession session = request.getSession();
 		UserVO userVO = (UserVO) session.getAttribute("user");
@@ -120,7 +121,7 @@ public class ContactController {
 		return "redirect:/contact/send";
 	}
 	
-	@RequestMapping(value="/{category}/detail/{idx}", method=RequestMethod.GET)
+	@GetMapping("/{category}/detail/{idx}")
 	public String detail(HttpServletRequest request, Model model, @PathVariable String category, @PathVariable Integer idx) throws Exception {
 		HttpSession session = request.getSession();
 		UserVO userVO = (UserVO) session.getAttribute("user");

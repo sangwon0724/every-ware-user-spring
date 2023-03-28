@@ -3,6 +3,7 @@ package com.solution.groupware.controller;
 import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -21,13 +22,13 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/warehouse")
 public class WarehouseController {
-	@RequestMapping(value="/{category}", method=RequestMethod.GET)
+	@GetMapping("/{category}")
 	public String list(HttpServletRequest request, @PathVariable int category) {
 		
 		return "/warehouse/list";
 	}
 	
-	@RequestMapping(value="/{category}/{no}", method=RequestMethod.GET)
+	@GetMapping("/{category}/{no}")
 	public String detail(HttpServletRequest request, @PathVariable int category, @PathVariable int no) {
 		
 		return "/warehouse/detail";

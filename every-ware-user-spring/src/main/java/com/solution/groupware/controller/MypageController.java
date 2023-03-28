@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -21,37 +22,37 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/mypage")
 public class MypageController {
-	@RequestMapping(value="/info", method=RequestMethod.GET)
+	@GetMapping("/info")
 	public String info(HttpServletRequest request) {
 		
 		return "info.mypage";
 	}
 	
-	@RequestMapping(value="/attendance", method=RequestMethod.GET)
+	@GetMapping("/attendance")
 	public String attendance(HttpServletRequest request) {
 		
 		return "attendance.mypage";
 	}
 	
-	@RequestMapping(value="/annual", method=RequestMethod.GET)
+	@GetMapping("/annual")
 	public String annual(HttpServletRequest request) {
 		
 		return "annual.mypage";
 	}
 
-	@RequestMapping(value="/salary", method=RequestMethod.GET)
+	@GetMapping("/salary")
 	public String salary(HttpServletRequest request) {
 		
 		return "salary.mypage";
 	}
 	
-	@RequestMapping(value="/certificate", method=RequestMethod.GET)
+	@GetMapping("/certificate")
 	public String certificate(HttpServletRequest request) {
 		
 		return "certificate.mypage";
 	}
 	
-	@RequestMapping(value="/setting", method=RequestMethod.GET)
+	@GetMapping("/setting")
 	public String setting(HttpServletRequest request) {
 		
 		return "setting.mypage";

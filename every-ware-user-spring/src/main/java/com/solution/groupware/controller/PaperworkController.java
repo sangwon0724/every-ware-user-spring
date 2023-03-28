@@ -4,6 +4,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -21,31 +22,31 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/paperwork")
 public class PaperworkController {
-	@RequestMapping(value="/form", method=RequestMethod.GET)
+	@GetMapping("/form")
 	public String form(HttpServletRequest request) {
 		
 		return "form.paperwork";
 	}
 	
-	@RequestMapping(value="/write", method=RequestMethod.GET)
+	@GetMapping("/write")
 	public String write(HttpServletRequest request) {
 		
 		return "write.paperwork";
 	}
 	
-	@RequestMapping(value="/send", method=RequestMethod.GET)
+	@GetMapping("/send")
 	public String send(HttpServletRequest request) {
 		
 		return "send.paperwork";
 	}
 	
-	@RequestMapping(value="/referrer", method=RequestMethod.GET)
+	@GetMapping("/referrer")
 	public String referrer(HttpServletRequest request) {
 		
 		return "referrer.paperwork";
 	}
 	
-	@RequestMapping(value="/all", method=RequestMethod.GET)
+	@GetMapping("/all")
 	public String all(HttpServletRequest request) {
 		
 		return "all.paperwork";

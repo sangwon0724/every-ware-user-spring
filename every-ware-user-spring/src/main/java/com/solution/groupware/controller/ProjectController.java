@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -24,31 +25,31 @@ import org.springframework.web.bind.annotation.RequestMethod;
 @Controller
 @RequestMapping("/project")
 public class ProjectController {
-	@RequestMapping(value="/dashboard", method=RequestMethod.GET)
+	@GetMapping("/dashboard")
 	public String dashboard(HttpServletRequest request) {
 		
 		return "dashboard.project";
 	}
 	
-	@RequestMapping(value="/list", method=RequestMethod.GET)
+	@GetMapping("/list")
 	public String list(HttpServletRequest request) {
 		
 		return "/project/list";
 	}
 	
-	@RequestMapping(value="/write/project", method=RequestMethod.GET)
+	@GetMapping("/write/project")
 	public String writeProject(HttpServletRequest request) {
 		
 		return "/project/write_project";
 	}
 	
-	@RequestMapping(value="/work", method=RequestMethod.GET)
+	@GetMapping("/work")
 	public String work(HttpServletRequest request) {
 		
 		return "/project/work";
 	}
 	
-	@RequestMapping(value= {"/write/work", "/write/work/{project}"}, method=RequestMethod.GET)
+	@GetMapping({"/write/work", "/write/work/{project}"})
 	public String writeWork(HttpServletRequest request, Model model, @PathVariable(required = false) Integer project) throws Exception {
 		System.out.println("테스트");
 		
@@ -64,7 +65,7 @@ public class ProjectController {
 	}
 	
 	//회계
-	@RequestMapping(value="/accounting", method=RequestMethod.GET)
+	@GetMapping("/accounting")
 	public String accounting(HttpServletRequest request) {
 		
 		return "accounting.project";

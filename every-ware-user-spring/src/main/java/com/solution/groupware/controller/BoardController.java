@@ -9,6 +9,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
@@ -33,7 +35,7 @@ public class BoardController {
 	@Autowired
 	private BoardService boardService;
 	
-	@RequestMapping(value="/write/{category}", method=RequestMethod.GET)
+	@GetMapping("/write/{category}")
 	public String write(HttpServletRequest request, Model model, @PathVariable int category) throws Exception {
 
 		model.addAttribute("category", boardService.selectBoardCategory());
@@ -42,7 +44,7 @@ public class BoardController {
 		return "/board/write";
 	}
 	
-	@RequestMapping(value="/save", method=RequestMethod.POST)
+	@PostMapping("/save")
 	public String save(HttpServletRequest request, Model model, BoardVO data) throws Exception {
 		String category = request.getParameter("categoryIdx");
 
@@ -58,7 +60,7 @@ public class BoardController {
 		return "redirect:/board/" + category;
 	}
 	
-	@RequestMapping(value="/{category}", method=RequestMethod.GET)
+	@GetMapping("/{category}")
 	public String list(HttpServletRequest request, Model model, @PathVariable int category) throws Exception {
 		
 		HashMap<String, Object> param = new HashMap<String, Object>();
@@ -72,7 +74,7 @@ public class BoardController {
 		return "/board/list";
 	}
 	
-	@RequestMapping(value="/{category}/{idx}", method=RequestMethod.GET)
+	@GetMapping("/{category}/{idx}")
 	public String detail(HttpServletRequest request, Model model, @PathVariable int category, @PathVariable int idx) throws Exception {
 		
 		HashMap<String, Object> param = new HashMap<String, Object>();
