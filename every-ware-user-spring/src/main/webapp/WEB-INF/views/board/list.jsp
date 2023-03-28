@@ -44,9 +44,9 @@
 					<tbody>
 						<c:forEach items="${list}" var="item">
 							<tr>
-								<td><input type="checkbox" contact-seq="${item.contactIdx}"/></td>
+								<td><input type="checkbox" board-seq="${item.boardIdx}"/></td>
 								<td>234</td>
-								<td><a href="/contact/receive/detail?idx=${item.contactIdx}">${item.title}</a></td>
+								<td><a href="/contact/receive/detail?idx=${item.boardIdx}">${item.title}</a></td>
 								<td>${item.writerUserName}</td>
 								<td>${item.readCount} / ${item.sendCount}</td>
 								<td>${item.regDate}</td>
@@ -78,6 +78,7 @@
 				      </a>
 				    </li> -->
 				  </ul>
+				  <a href="/board/write/${currentCategory}" class="btn btn-primary">로그아웃</a>
 				</footer>
 			</div>
 		</main>
