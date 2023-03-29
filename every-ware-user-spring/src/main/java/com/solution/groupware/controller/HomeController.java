@@ -31,7 +31,7 @@ public class HomeController {
 	@GetMapping("/")
 	public String home(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
-		UserVO userVO = (UserVO) session.getAttribute("user");
+		UserVO userVO = (UserVO) session.getAttribute("sessionInfo");
 		if(userVO==null) return "redirect:/user/login";
 		
 		return "home.main";

@@ -25,7 +25,7 @@
 				<form action="/board/save" method="post" id="form">
 					<div class="mb-3">
 					  <label for="title" class="form-label">제목</label>
-					  <input type="email" class="form-control" id="title" name="title" placeholder="제목을 입력해주세요.">
+					  <input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력해주세요.">
 					</div>
 					<div class="mb-3">
 					  	<label for="receiver" class="form-label">카테고리</label>

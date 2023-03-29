@@ -35,8 +35,24 @@
 	width: 80vw;
 }
 
+.project-body .content100{
+	width: 100%;
+}
 
 /* 글쓰기 */
 .project-body .content.write{
 	width: 65vw;
+}
+
+/* 계획 기간 */
+.project-body .planDate{
+	display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 30% 5% 30%;
+}
+
+.project-body .planDate span{
+	display: flex;
+	justify-content: center;
+	align-items: center;
 }

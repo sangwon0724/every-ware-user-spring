@@ -1,0 +1,21 @@
+package com.solution.groupware.service;
+
+import java.util.HashMap;
+import java.util.List;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+import com.solution.groupware.mapper.CommonMapper;
+import com.solution.groupware.vo.CodeVO;
+
+@Service
+public class CommonService {
+	@Autowired
+	private CommonMapper commonMapper;
+	
+	//코드 목록 조회
+	public List<CodeVO> selectCodeList(HashMap<String, Object> param) throws Exception {
+		return commonMapper.selectCodeList(param);
+	};
+}

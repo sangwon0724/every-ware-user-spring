@@ -8,13 +8,13 @@
 		SELECT
 			IDX AS CATEGORY_IDX,
 			NAME,
-			ORDER_SEQ
+			ORDER_NO
 		FROM
 			BOARD_CATEGORY
 		WHERE
 			USE_YN = 'Y'
 		ORDER BY
-			ORDER_SEQ ASC
+			ORDER_NO ASC
 	</select>
 
 	<!-- 게시글 목록 조회  -->

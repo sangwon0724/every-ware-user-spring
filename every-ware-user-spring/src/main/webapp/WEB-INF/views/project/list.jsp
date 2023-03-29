@@ -9,19 +9,7 @@
 	<c:import url="../layout/header.jsp"/>
     <div id="common-wrapper">
     	<main class="container-fluid project-body">
-			<nav class="menu_list">
-				<div class="row">
-				  <div class="col-10">
-				    <div class="list-group" id="list-tab" role="tablist">
-				    	<c:forEach items="${category}" var="item">
-				      		<a class="list-group-item list-group-item-action${currentCategory eq item.categoryIdx ? ' active' : ''}" id="list-home-list" href="/board/${item.categoryIdx}" role="tab">${item.name}</a>
-				    	</c:forEach>
-				    </div>
-				  </div>
-				</div>
-			</nav>
-			
-			<div class="content">
+			<div class="content100">
 				<table class="table table-hover table-bordered border-primary align-middle">
 					<colgroup>
 						<col width="10%">

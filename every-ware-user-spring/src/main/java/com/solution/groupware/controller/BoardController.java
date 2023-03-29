@@ -49,7 +49,7 @@ public class BoardController {
 		String category = request.getParameter("categoryIdx");
 
 		HttpSession session = request.getSession();
-		UserVO userVO = (UserVO) session.getAttribute("user");
+		UserVO userVO = (UserVO) session.getAttribute("sessionInfo");
 		int userIdx = userVO.getUserIdx();
 		
 		data.setUserIdx(userIdx);

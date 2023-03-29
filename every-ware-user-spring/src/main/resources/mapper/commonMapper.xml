@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.solution.groupware.mapper.CommonMapper">
+
+	<!-- 코드 목록 조회  -->
+	<select id="selectCodeList" parameterType="hashmap" resultType="CodeVO">
+		/* selectBoardCategory */
+		SELECT
+			NAME,
+			VALUE,
+			ORDER_NO
+		FROM
+			CODE_INFO CI
+			INNER JOIN CODE_GRP_INFO CGI
+				ON CGI.GRP_CODE = CI.GRP_CODE
+				AND CGI.USE_YN = 'Y'
+		WHERE
+			CI.USE_YN = 'Y'
+			<if test="grpCode != null and grpCode != ''">
+				AND CGI.GRP_CODE = #{grpCode}
+			</if>
+		ORDER BY
+			CI.GRP_CODE, CI.ORDER_NO
+	</select>
+</mapper>
