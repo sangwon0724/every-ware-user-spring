@@ -7,7 +7,6 @@
 		/* selectCodeList */
 		SELECT
 			CI.CODE,
-			CI.NAME,
 			CI.VALUE,
 			CI.ORDER_NO
 		FROM

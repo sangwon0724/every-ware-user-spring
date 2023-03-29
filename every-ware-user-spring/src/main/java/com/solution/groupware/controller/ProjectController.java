@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -18,6 +19,7 @@ import com.solution.groupware.service.CommonService;
 import com.solution.groupware.service.ProjectService;
 import com.solution.groupware.setting.ConstValues;
 import com.solution.groupware.vo.ProjectVO;
+import com.solution.groupware.vo.UserVO;
 
 /**
  * @packageName : 	com.solution.groupware.controller
@@ -46,7 +48,7 @@ public class ProjectController {
 	}
 	
 	@GetMapping("/list")
-	public String list(HttpServletRequest request, Model model) {
+	public String projectList(HttpServletRequest request, Model model) {
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		
 		try {
@@ -55,15 +57,16 @@ public class ProjectController {
 			e.printStackTrace();
 		}
 		
-		return "/project/list";
+		return "/project/list_project";
 	}
 	
-	@GetMapping("/{project}")
+	@GetMapping("/detail/{project}")
 	public String projectDetail(HttpServletRequest request, Model model, @PathVariable Integer project) {
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		
 		try {
-			model.addAttribute("list", projectService.selectProjectList(param));
+			param.put("idx", project);
+			model.addAttribute("detail", projectService.selectProjectDetail(param));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -91,26 +94,46 @@ public class ProjectController {
 	@PostMapping("/save/project")
 	public String saveProject(HttpServletRequest request, Model model, ProjectVO param) {
 		try {
+			HttpSession session = request.getSession();
+			UserVO userVO = (UserVO) session.getAttribute(ConstValues.SESSION_INFO);
+			int userIdx = userVO.getUserIdx();
+			
+			param.setUserIdx(userIdx);
+			
 			projectService.insertProject(param);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return "redirect:/project/list";
+		return "redirect:/project/list_project";
 	}
 	
 	@GetMapping({"/work", "/work/{project}"})
-	public String work(HttpServletRequest request, Model model, @PathVariable(required = false) Integer project) {
+	public String workList(HttpServletRequest request, Model model, @PathVariable(required = false) Integer project) {
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		
 		try {
-			model.addAttribute("project", projectService.selectProjectList(param));
+			model.addAttribute("project", projectService.selectProjectListForMenu(param));
 			model.addAttribute("currentProject", project);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return "/project/work";
+		return "/project/list_work";
+	}
+	
+	@GetMapping({"/work/detail/{idx}", "/work/detail/{project}/{idx}"})
+	public String workDetail(HttpServletRequest request, Model model, @PathVariable(required = false) Integer project, @PathVariable Integer idx) {
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		
+		try {
+			model.addAttribute("project", projectService.selectProjectListForMenu(param));
+			model.addAttribute("currentProject", project);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "/project/detail_work";
 	}
 	
 	@GetMapping({"/write/work", "/write/work/{project}"})
@@ -120,7 +143,7 @@ public class ProjectController {
 		param.put("projectIdx", project);
 		
 		try {
-			model.addAttribute("project", projectService.selectProjectList(param));
+			model.addAttribute("project", projectService.selectProjectListForMenu(param));
 			model.addAttribute("workflow", commonService.selectCodeList(param));
 			model.addAttribute("currentProject", project);
 			

@@ -44,7 +44,7 @@
 		    <li><a class="dropdown-item" href="/contact/write">업무연락 보내기</a></li>
           </ul>
         </li>
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white !important;">
             전자결재
           </a>
@@ -55,7 +55,7 @@
 		    <li><a class="dropdown-item" href="/paperwork/referrer">참조함</a></li>
 		    <li><a class="dropdown-item" href="/paperwork/all">전체함</a></li>
           </ul>
-        </li>
+        </li> -->
         <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white !important;">
             일정관리
@@ -77,7 +77,7 @@
             프로젝트 관리
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-		    <li><a class="dropdown-item" href="/project/dashboard">프로젝트 현황</a></li>
+		    <!-- <li><a class="dropdown-item" href="/project/dashboard">프로젝트 현황</a></li> -->
 		    <li><a class="dropdown-item" href="/project/list">프로젝트 관리</a></li>
 		    <li><a class="dropdown-item" href="/project/work">프로젝트 일감</a></li>
 		    <!-- <li><a class="dropdown-item" href="/project/accounting">프로젝트 회계</a></li> -->

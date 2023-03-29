@@ -16,11 +16,9 @@ public class ProjectVO {
 	private Integer clientIdx;
 	private String clientName;
 	private String workflow;
-	private String workFlowName;
+	private String workflowName;
 	private String planDateSt;
 	private String planDateEd;
-	private String complteDate;
-	private String cancleDate;
 	private Integer contractAmount;
 	private Integer workAmount;
 	private Integer workUserCount;
@@ -102,11 +100,11 @@ public class ProjectVO {
 	public void setWorkflow(String workflow) {
 		this.workflow = workflow;
 	}
-	public String getWorkFlowName() {
-		return workFlowName;
+	public String getworkflowName() {
+		return workflowName;
 	}
-	public void setWorkFlowName(String workFlowName) {
-		this.workFlowName = workFlowName;
+	public void setworkflowName(String workflowName) {
+		this.workflowName = workflowName;
 	}
 	public String getPlanDateSt() {
 		return planDateSt;
@@ -119,18 +117,6 @@ public class ProjectVO {
 	}
 	public void setPlanDateEd(String planDateEd) {
 		this.planDateEd = planDateEd;
-	}
-	public String getComplteDate() {
-		return complteDate;
-	}
-	public void setComplteDate(String complteDate) {
-		this.complteDate = complteDate;
-	}
-	public String getCancleDate() {
-		return cancleDate;
-	}
-	public void setCancleDate(String cancleDate) {
-		this.cancleDate = cancleDate;
 	}
 	public Integer getContractAmount() {
 		return contractAmount;

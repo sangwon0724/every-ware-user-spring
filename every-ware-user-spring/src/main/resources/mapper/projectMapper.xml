@@ -33,10 +33,8 @@
 				WHEN WORKFLOW IS NULL THEN ''
 				ELSE (SELECT VALUE FROM CODE_INFO WHERE USE_YN = 'Y' AND GRP_CODE = 'PROJECT_WORKFLOW' AND CODE = WORKFLOW)
 			END AS WORKFLOW_NAME,
-			PLAN_DATE_ST,
-			PLAN_DATE_ED,
-			COMPLETE_DATE,
-			CANCLE_DATE,
+			DATE_FORMAT(PLAN_DATE_ST,  '%Y-%m-%d') AS PLAN_DATE_ST,
+			DATE_FORMAT(PLAN_DATE_ED,  '%Y-%m-%d') AS PLAN_DATE_ED,
 			CONTRACT_AMOUNT,
 			WORK_AMOUNT,
 			WORK_USER_COUNT,
@@ -50,6 +48,67 @@
 			PI.USE_YN = 'Y'
 		ORDER BY
 			PI.IDX DESC
+	</select>
+
+	<!-- 프로젝트 목록 조회 (메뉴용)  -->
+	<select id="selectProjectListForMenu" resultType="ProjectVO">
+		/* selectProjectListForMenu */
+		SELECT
+			IDX,
+			NAME
+		FROM
+			PROJECT_INFO PI
+		WHERE
+			PI.USE_YN = 'Y'
+		ORDER BY
+			PI.IDX ASC
+	</select>
+
+	<!-- 프로젝트 상세 조회  -->
+	<select id="selectProjectDetail" parameterType="hashmap" resultType="ProjectVO">
+		/* selectProjectDetail */
+		SELECT
+			IDX,
+			NAME,
+			DEPT_IDX,
+			CASE
+				WHEN DEPT_IDX IS NULL THEN ''
+				ELSE ''
+			END AS DEPT_NAME,
+			PM_USER_IDX,
+			CASE
+				WHEN PM_USER_IDX IS NULL THEN ''
+				ELSE ''
+			END AS PM_USER_NAME,
+			PL_USER_IDX,
+			CASE
+				WHEN PL_USER_IDX IS NULL THEN ''
+				ELSE ''
+			END AS PL_USER_NAME,
+			CLIENT_IDX,
+			CASE
+				WHEN CLIENT_IDX IS NULL THEN ''
+				ELSE ''
+			END AS CLIENT_NAME,
+			WORKFLOW,
+			CASE
+				WHEN WORKFLOW IS NULL THEN ''
+				ELSE (SELECT VALUE FROM CODE_INFO WHERE USE_YN = 'Y' AND GRP_CODE = 'PROJECT_WORKFLOW' AND CODE = WORKFLOW)
+			END AS WORKFLOW_NAME,
+			DATE_FORMAT(PLAN_DATE_ST,  '%Y-%m-%d') AS PLAN_DATE_ST,
+			DATE_FORMAT(PLAN_DATE_ED,  '%Y-%m-%d') AS PLAN_DATE_ED,
+			CONTRACT_AMOUNT,
+			WORK_AMOUNT,
+			WORK_USER_COUNT,
+			OUTLINE,
+			SIGNIFICANT,
+			REG_DATE,
+			MOD_DATE
+		FROM
+			PROJECT_INFO PI
+		WHERE
+			PI.USE_YN = 'Y'
+			AND PI.IDX = #{idx}
 	</select>
 	
 	<!-- 프로젝트 추가  -->
@@ -83,8 +142,14 @@
 			#{plUserIdx},
 			#{clientIdx},
 			#{workflow},
-			#{planDateSt},
-			#{planDateEd},
+			<choose>
+				<when test="planDateSt == null or planDateSt == ''">NULL,</when>
+				<otherwise>#{planDateSt},</otherwise>
+			</choose>
+			<choose>
+				<when test="planDateEd == null or planDateEd == ''">NULL,</when>
+				<otherwise>#{planDateEd},</otherwise>
+			</choose>
 			#{contractAmount},
 			#{workAmount},
 			#{workUserCount},

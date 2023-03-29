@@ -9,37 +9,34 @@
 	<c:import url="../layout/header.jsp"/>
     <div id="common-wrapper">
     	<main class="container-fluid project-body">
-			<div class="content100">
+			<div class="content">
 				<table class="table table-hover table-bordered border-primary align-middle">
 					<colgroup>
 						<col width="10%">
 						<col width="*">
 						<col width="10%">
 						<col width="15%">
-						<col width="10%">
 					</colgroup>
 					<thead>
 						<tr>
 							<th>번호</th>
 							<th>제목</th>
-							<th>작성자</th>
-							<th>작성일자</th>
-							<th>[항목변경]</th>
+							<th>작업단계</th>
+							<th>계획기간</th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach items="${list}" var="item">
 							<tr>
 								<td>${item.idx}</td>
-								<td><a href="/project/${item.idx}">${item.name}</a></td>
-								<td>[작성자]</td>
-								<td>${item.regDate}</td>
-								<td>[항목변경]</td>
+								<td><a href="/project/detail/${item.idx}">${item.name}</a></td>
+								<td>${item.workflowName}</td>
+								<td>-</td>
 							</tr>
 						</c:forEach>
 						<c:if test="${empty list or fn:length(list) eq 0}">
 							<tr>
-								<td colspan="5">
+								<td colspan="4">
 									데이터가 존재하지 않습니다.
 								</td>
 							</tr>

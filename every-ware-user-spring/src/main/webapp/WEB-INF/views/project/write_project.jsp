@@ -55,7 +55,7 @@
 					  	<label for="workflow" class="form-label">작업단계</label>
 						<select class="form-select" aria-label="Default select example" id="workflow" name="workflow">
 						  	<option value="" selected>선택</option>
-							<c:forEach items="${workflow}" var="item">${item }
+							<c:forEach items="${workflow}" var="item">${item}
 						    	<option value="${item.code}">${item.value}</option>
 							</c:forEach>
 						</select>
