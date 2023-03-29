@@ -14,8 +14,8 @@
 				  <div class="col-10">
 				    <div class="list-group" id="list-tab" role="tablist">
 			      		<a class="list-group-item list-group-item-action${empty currentProject ? ' active' : ''}" id="list-home-list" href="/project/work" role="tab">전체</a>
-				    	<c:forEach items="${category}" var="item">
-				      		<a class="list-group-item list-group-item-action${currentCategory eq item.categoryIdx ? ' active' : ''}" id="list-home-list" href="/project/work/${item.idx}" role="tab">${item.name}</a>
+				    	<c:forEach items="${project}" var="item">
+				      		<a class="list-group-item list-group-item-action${currentProject eq item.idx ? ' active' : ''}" id="list-home-list" href="/project/work/${item.idx}" role="tab">${item.name}</a>
 				    	</c:forEach>
 				    </div>
 				  </div>

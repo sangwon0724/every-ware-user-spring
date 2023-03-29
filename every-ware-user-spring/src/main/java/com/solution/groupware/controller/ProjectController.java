@@ -99,12 +99,13 @@ public class ProjectController {
 		return "redirect:/project/list";
 	}
 	
-	@GetMapping("/work")
-	public String work(HttpServletRequest request, Model model) {
+	@GetMapping({"/work", "/work/{project}"})
+	public String work(HttpServletRequest request, Model model, @PathVariable(required = false) Integer project) {
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		
 		try {
 			model.addAttribute("project", projectService.selectProjectList(param));
+			model.addAttribute("currentProject", project);
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
