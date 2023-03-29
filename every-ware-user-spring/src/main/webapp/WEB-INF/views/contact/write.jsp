@@ -26,7 +26,7 @@
 			<div class="mb-3">
 			  	<label for="receiver" class="form-label">수신대상</label>
 				<select class="form-select" aria-label="Default select example" id="receiveUserIdx" name="receiveUserIdx">
-				  <option value="" selected>수신대상을 선택해주세요.</option>
+				  <option value="" selected>선택</option>
 				  <option value="1">손경배 팀장</option>
 				  <option value="2">김채원 대리</option>
 				  <option value="3">인진교 실장</option>

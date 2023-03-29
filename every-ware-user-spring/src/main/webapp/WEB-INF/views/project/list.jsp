@@ -24,17 +24,17 @@
 							<th>제목</th>
 							<th>작성자</th>
 							<th>작성일자</th>
-							<th>조회수</th>
+							<th>[항목변경]</th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach items="${list}" var="item">
 							<tr>
 								<td>${item.idx}</td>
-								<td><a href="/board/${currentCategory}/${item.idx}">${item.title}</a></td>
-								<td>${item.writerUserName}</td>
+								<td><a href="/project/${item.idx}">${item.name}</a></td>
+								<td>[작성자]</td>
 								<td>${item.regDate}</td>
-								<td>${item.views}</td>
+								<td>[항목변경]</td>
 							</tr>
 						</c:forEach>
 						<c:if test="${empty list or fn:length(list) eq 0}">

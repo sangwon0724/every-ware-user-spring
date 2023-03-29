@@ -4,11 +4,12 @@
 
 	<!-- 코드 목록 조회  -->
 	<select id="selectCodeList" parameterType="hashmap" resultType="CodeVO">
-		/* selectBoardCategory */
+		/* selectCodeList */
 		SELECT
-			NAME,
-			VALUE,
-			ORDER_NO
+			CI.CODE,
+			CI.NAME,
+			CI.VALUE,
+			CI.ORDER_NO
 		FROM
 			CODE_INFO CI
 			INNER JOIN CODE_GRP_INFO CGI
@@ -21,5 +22,20 @@
 			</if>
 		ORDER BY
 			CI.GRP_CODE, CI.ORDER_NO
+	</select>
+	
+	<!-- 소속 목록 조회  -->
+	<select id="selectDeptList" parameterType="hashmap" resultType="DescVO">
+		/* selectDeptList */
+		SELECT
+			DI.IDX,
+			DI.NAME,
+			DI.ORDER_NO
+		FROM
+			DEPT_INFO DI
+		WHERE
+			DI.USE_YN = 'Y'
+		ORDER BY
+			DI.ORDER_NO
 	</select>
 </mapper>

@@ -4,10 +4,10 @@
 	<span class="logo" onclick="command_action(main)">Every Ware</span>
 	<div class="panel">
 		<c:choose>
-			<c:when test="${empty sessionScope.user}">
+			<c:when test="${empty sessionScope.sessionInfo}">
 				<button type="button" class="btn btn-primary me-3" onclick="login()">로그인</button>
 			</c:when>
-			<c:when test="${not empty sessionScope.user}">
+			<c:when test="${not empty sessionScope.sessionInfo}">
 				<!-- <div class="tiles">
 					<div class="desc">
 						<span>[소속]</span>

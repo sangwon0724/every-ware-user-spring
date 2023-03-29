@@ -4,22 +4,22 @@ import org.apache.ibatis.type.Alias;
 
 @Alias("CodeVO")
 public class CodeVO {
-	private int grpCode;
-	private int code;
+	private String grpCode;
+	private String code;
 	private String name;
 	private String value;
 	private Integer orderNo;
 	
-	public int getGrpCode() {
+	public String getGrpCode() {
 		return grpCode;
 	}
-	public void setGrpCode(int grpCode) {
+	public void setGrpCode(String grpCode) {
 		this.grpCode = grpCode;
 	}
-	public int getCode() {
+	public String getCode() {
 		return code;
 	}
-	public void setCode(int code) {
+	public void setCode(String code) {
 		this.code = code;
 	}
 	public String getName() {

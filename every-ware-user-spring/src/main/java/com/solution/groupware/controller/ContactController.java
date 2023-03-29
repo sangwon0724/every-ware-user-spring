@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.solution.groupware.service.ContactService;
+import com.solution.groupware.setting.ConstValues;
 import com.solution.groupware.vo.UserVO;
 
 /**
@@ -38,7 +39,7 @@ public class ContactController {
 	@GetMapping("/receive")
 	public String receive(HttpServletRequest request, Model model) throws Exception {
 		HttpSession session = request.getSession();
-		UserVO userVO = (UserVO) session.getAttribute("sessionInfo");
+		UserVO userVO = (UserVO) session.getAttribute(ConstValues.SESSION_INFO);
 		int userIdx = userVO.getUserIdx();
 		
 		HashMap<String, Object> param = new HashMap<String, Object>();
@@ -52,7 +53,7 @@ public class ContactController {
 	@GetMapping("/send")
 	public String send(HttpServletRequest request, Model model) throws Exception {
 		HttpSession session = request.getSession();
-		UserVO userVO = (UserVO) session.getAttribute("sessionInfo");
+		UserVO userVO = (UserVO) session.getAttribute(ConstValues.SESSION_INFO);
 		int userIdx = userVO.getUserIdx();
 		
 		HashMap<String, Object> param = new HashMap<String, Object>();
@@ -66,7 +67,7 @@ public class ContactController {
 	@GetMapping("/all")
 	public String all(HttpServletRequest request, Model model) throws Exception {
 		HttpSession session = request.getSession();
-		UserVO userVO = (UserVO) session.getAttribute("sessionInfo");
+		UserVO userVO = (UserVO) session.getAttribute(ConstValues.SESSION_INFO);
 		int userIdx = userVO.getUserIdx();
 		
 		HashMap<String, Object> param = new HashMap<String, Object>();
@@ -80,7 +81,7 @@ public class ContactController {
 	@GetMapping("/trash")
 	public String trash(HttpServletRequest request, Model model) throws Exception {
 		HttpSession session = request.getSession();
-		UserVO userVO = (UserVO) session.getAttribute("sessionInfo");
+		UserVO userVO = (UserVO) session.getAttribute(ConstValues.SESSION_INFO);
 		int userIdx = userVO.getUserIdx();
 		
 		HashMap<String, Object> param = new HashMap<String, Object>();
@@ -94,7 +95,7 @@ public class ContactController {
 	@GetMapping("/write")
 	public String write(HttpServletRequest request, Model model) throws Exception {
 		HttpSession session = request.getSession();
-		UserVO userVO = (UserVO) session.getAttribute("sessionInfo");
+		UserVO userVO = (UserVO) session.getAttribute(ConstValues.SESSION_INFO);
 		int userIdx = userVO.getUserIdx();
 		
 		HashMap<String, Object> param = new HashMap<String, Object>();
@@ -106,7 +107,7 @@ public class ContactController {
 	@PostMapping("/save")
 	public String save(HttpServletRequest request, Model model) throws Exception {
 		HttpSession session = request.getSession();
-		UserVO userVO = (UserVO) session.getAttribute("sessionInfo");
+		UserVO userVO = (UserVO) session.getAttribute(ConstValues.SESSION_INFO);
 		int userIdx = userVO.getUserIdx();
 		
 		HashMap<String, Object> param = new HashMap<String, Object>();
@@ -124,7 +125,7 @@ public class ContactController {
 	@GetMapping("/{category}/detail/{idx}")
 	public String detail(HttpServletRequest request, Model model, @PathVariable String category, @PathVariable Integer idx) throws Exception {
 		HttpSession session = request.getSession();
-		UserVO userVO = (UserVO) session.getAttribute("sessionInfo");
+		UserVO userVO = (UserVO) session.getAttribute(ConstValues.SESSION_INFO);
 		int userIdx = userVO.getUserIdx();
 		
 		HashMap<String, Object> param = new HashMap<String, Object>();

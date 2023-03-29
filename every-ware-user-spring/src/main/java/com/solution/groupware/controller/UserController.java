@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import com.solution.groupware.vo.UserVO;
 
+import com.solution.groupware.setting.ConstValues;
+
 /**
  * @packageName : 	com.solution.groupware.controller
  * @fileName    : 	UserController.java 
@@ -42,7 +44,7 @@ public class UserController {
 	@PostMapping("/login")
 	public String postLogin(@RequestParam HashMap<String, Object> map, HttpServletRequest request) throws Exception {
 		HttpSession session = request.getSession();
-		UserVO userVO = (UserVO) session.getAttribute("sessionInfo");
+		UserVO userVO = (UserVO) session.getAttribute(ConstValues.SESSION_INFO);
 		
 		//임시 - 데이터 검증 과정 필요
 		if(userVO == null) {

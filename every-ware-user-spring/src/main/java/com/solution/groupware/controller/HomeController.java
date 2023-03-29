@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.solution.groupware.setting.ConstValues;
 import com.solution.groupware.vo.UserVO;
 
 /**
@@ -31,7 +32,7 @@ public class HomeController {
 	@GetMapping("/")
 	public String home(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();
-		UserVO userVO = (UserVO) session.getAttribute("sessionInfo");
+		UserVO userVO = (UserVO) session.getAttribute(ConstValues.SESSION_INFO);
 		if(userVO==null) return "redirect:/user/login";
 		
 		return "home.main";

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.solution.groupware.mapper.CommonMapper;
 import com.solution.groupware.vo.CodeVO;
+import com.solution.groupware.vo.DescVO;
 
 @Service
 public class CommonService {
@@ -17,5 +18,10 @@ public class CommonService {
 	//코드 목록 조회
 	public List<CodeVO> selectCodeList(HashMap<String, Object> param) throws Exception {
 		return commonMapper.selectCodeList(param);
+	};
+	
+	//소속 목록 조회
+	public List<DescVO> selectDeptList(HashMap<String, Object> param) throws Exception {
+		return commonMapper.selectDeptList(param);
 	};
 }

@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.solution.groupware.service.BoardService;
+import com.solution.groupware.setting.ConstValues;
 import com.solution.groupware.vo.BoardVO;
 import com.solution.groupware.vo.UserVO;
 
@@ -49,7 +50,7 @@ public class BoardController {
 		String category = request.getParameter("categoryIdx");
 
 		HttpSession session = request.getSession();
-		UserVO userVO = (UserVO) session.getAttribute("sessionInfo");
+		UserVO userVO = (UserVO) session.getAttribute(ConstValues.SESSION_INFO);
 		int userIdx = userVO.getUserIdx();
 		
 		data.setUserIdx(userIdx);

@@ -1,5 +1,6 @@
 package com.solution.groupware.controller;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 import javax.servlet.http.HttpServletRequest;
@@ -9,10 +10,14 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.solution.groupware.service.CommonService;
+import com.solution.groupware.service.ProjectService;
+import com.solution.groupware.setting.ConstValues;
+import com.solution.groupware.vo.ProjectVO;
 
 /**
  * @packageName : 	com.solution.groupware.controller
@@ -28,10 +33,11 @@ import com.solution.groupware.service.CommonService;
 @Controller
 @RequestMapping("/project")
 public class ProjectController {
-	private final String GRP_CODE_WORKFLOW = "PROJECT_WORKFLOW";
-	
 	@Autowired
 	CommonService commonService;
+	
+	@Autowired
+	ProjectService projectService;
 	
 	@GetMapping("/dashboard")
 	public String dashboard(HttpServletRequest request, Model model) {
@@ -41,16 +47,39 @@ public class ProjectController {
 	
 	@GetMapping("/list")
 	public String list(HttpServletRequest request, Model model) {
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		
+		try {
+			model.addAttribute("list", projectService.selectProjectList(param));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		return "/project/list";
+	}
+	
+	@GetMapping("/{project}")
+	public String projectDetail(HttpServletRequest request, Model model, @PathVariable Integer project) {
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		
+		try {
+			model.addAttribute("list", projectService.selectProjectList(param));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "/project/detail_project";
 	}
 	
 	@GetMapping("/write/project")
 	public String writeProject(HttpServletRequest request, Model model) {
 		HashMap<String, Object> param = new HashMap<String, Object>();
-		param.put("grpCode", GRP_CODE_WORKFLOW);
+		param.put("grpCode", ConstValues.GRP_CODE.PROJECT_WORKFLOW.getValue());
 		
 		try {
+			model.addAttribute("dept", commonService.selectDeptList(param));
+			model.addAttribute("user", new ArrayList<String>());
+			model.addAttribute("client", new ArrayList<String>());
 			model.addAttribute("workflow", commonService.selectCodeList(param));
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -59,8 +88,26 @@ public class ProjectController {
 		return "/project/write_project";
 	}
 	
+	@PostMapping("/save/project")
+	public String saveProject(HttpServletRequest request, Model model, ProjectVO param) {
+		try {
+			projectService.insertProject(param);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "redirect:/project/list";
+	}
+	
 	@GetMapping("/work")
 	public String work(HttpServletRequest request, Model model) {
+		HashMap<String, Object> param = new HashMap<String, Object>();
+		
+		try {
+			model.addAttribute("project", projectService.selectProjectList(param));
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		return "/project/work";
 	}
@@ -72,10 +119,11 @@ public class ProjectController {
 		param.put("projectIdx", project);
 		
 		try {
+			model.addAttribute("project", projectService.selectProjectList(param));
 			model.addAttribute("workflow", commonService.selectCodeList(param));
 			model.addAttribute("currentProject", project);
 			
-			//model.addAttribute("detail", boardService.selectBoardDetail(param));
+			//model.addAttribute("detail", boardService.selectProjectDetail(param));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}

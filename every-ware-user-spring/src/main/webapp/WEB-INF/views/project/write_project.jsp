@@ -10,7 +10,7 @@
     <div id="common-wrapper">
     	<main class="container-fluid project-body" style="justify-content: center;">
 			<div class="content write">
-				<form action="/board/save" method="post" id="form">
+				<form action="/project/save/project" method="post" id="form">
 					<div class="mb-3">
 					  <label for="name" class="form-label">프로젝트명</label>
 					  <input type="text" class="form-control" id="name" name="name" placeholder="프로젝트명을 입력해주세요.">
@@ -18,7 +18,7 @@
 					<div class="mb-3">
 					  	<label for="deptIdx" class="form-label">주관 팀</label>
 						<select class="form-select" aria-label="Default select example" id="deptIdx" name="deptIdx">
-						  	<option value="" selected>선택해주세요.</option>
+						  	<option value="" selected>선택</option>
 					    	<c:forEach items="${desc}" var="item">
 					      		<option value="${item.idx}">${item.name}</option>
 					    	</c:forEach>
@@ -27,7 +27,7 @@
 					<div class="mb-3">
 					  	<label for="pmUserIdx" class="form-label">PM</label>
 						<select class="form-select" aria-label="Default select example" id="pmUserIdx" name="pmUserIdx">
-							<option value="" selected>선택해주세요.</option>
+							<option value="" selected>선택</option>
 							<c:forEach items="${user}" var="item">
 						    	<option value="${item.idx}">${item.name}</option>
 							</c:forEach>
@@ -36,7 +36,7 @@
 					<div class="mb-3">
 					  	<label for="plUserIdx" class="form-label">PL</label>
 						<select class="form-select" aria-label="Default select example" id="plUserIdx" name="plUserIdx">
-							<option value="" selected>선택해주세요.</option>
+							<option value="" selected>선택</option>
 							<c:forEach items="${user}" var="item">
 						    	<option value="${item.idx}">${item.name}</option>
 							</c:forEach>
@@ -45,17 +45,17 @@
 					<div class="mb-3">
 					  	<label for="clientIdx" class="form-label">발주처</label>
 						<select class="form-select" aria-label="Default select example" id="clientIdx" name="clientIdx">
-							<option value="" selected>선택해주세요.</option>
+							<option value="" selected>선택</option>
 							<c:forEach items="${client}" var="item">
 						    	<option value="${item.idx}">${item.name}</option>
 							</c:forEach>
 						</select>
 					</div>
 					<div class="mb-3">
-					  	<label for="clientIdx" class="form-label">작업단계</label>
-						<select class="form-select" aria-label="Default select example" id="clientIdx" name="clientIdx">
-						  	<option value="" selected>선택해주세요.</option>
-							<c:forEach items="${workflow}" var="item">
+					  	<label for="workflow" class="form-label">작업단계</label>
+						<select class="form-select" aria-label="Default select example" id="workflow" name="workflow">
+						  	<option value="" selected>선택</option>
+							<c:forEach items="${workflow}" var="item">${item }
 						    	<option value="${item.code}">${item.value}</option>
 							</c:forEach>
 						</select>
@@ -69,12 +69,24 @@
 						</div>
 					</div>
 					<div class="mb-3">
-					  <label for="content" class="form-label">내용</label>
-					  <textarea class="form-control" id="summernote" name="editordata"></textarea>
+					  <label for="contractAmount" class="form-label">계약금액</label>
+					  <input type="number" class="form-control" id="contractAmount" name="contractAmount" onkeypress="return checkNumber(event)">
 					</div>
 					<div class="mb-3">
-					  <label for="file" class="form-label">첨부파일</label>
-					  <input class="form-control" type="file" id="file" name="file" multiple>
+					  <label for="workAmount" class="form-label">실행예산</label>
+					  <input type="number" class="form-control" id="workAmount" name="workAmount" onkeypress="return checkNumber(event)">
+					</div>
+					<div class="mb-3">
+					  <label for="workUserCount" class="form-label">투입인원 수</label>
+					  <input type="number" class="form-control" id="workUserCount" name="workUserCount" onkeypress="return checkNumber(event)">
+					</div>
+					<div class="mb-3">
+					  <label for="outline" class="form-label">개요</label>
+					  <textarea class="form-control" id="outline" name="outline" rows="3" maxlength="300" style="resize: none;"></textarea>
+					</div>
+					<div class="mb-3">
+					  <label for="significant" class="form-label">특이사항</label>
+					  <textarea class="form-control" id="significant" name="significant" rows="3" maxlength="300" style="resize: none;"></textarea>
 					</div>
 					<div class="mb-3">
 						<button type="button" class="btn btn-primary" onclick="save(event)">저장</button>
@@ -88,22 +100,6 @@
 
 	<script>
 		$(document).ready(function(){
-			$('#summernote').summernote({
-				  height: 300,
-				  lang: 'ko-KR',
-				  toolbar: [
-					    // [groupName, [list of button]]
-					    ['style', ['bold', 'italic', 'underline', 'clear']],
-					    ['font', ['strikethrough', 'superscript', 'subscript']],
-					    ['fontsize', ['fontsize']],
-					    ['color', ['color']],
-					    ['para', ['ul', 'ol', 'paragraph']],
-					    ['height', ['height']]
-					],
-					//fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
-					//fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
-			  }); //summernote 종료
-			  
 			   $('#planDateSt')
 			      .datepicker({
 			         format: 'yyyy-mm-dd', //데이터 포맷 형식(yyyy : 년 mm : 월 dd : 일 )
@@ -148,34 +144,33 @@
 		}); //ready 종료
 	
 		/* 저장 */
-		function save(e){
+		function save(event){
 			event.preventDefault();
 			
-			var title = $("#title").val();
-			var categoryIdx = $("#categoryIdx").val();
-			var content = $('#summernote').summernote('code');
+			var name = $("#name").val();
+			var workflow = $("#workflow").val();
 			
-			if(title == ""){
-				alert("제목을 입력해주세요.");
-				$("#title").focus();
+			if(name == ""){
+				alert("프로젝트명을 입력해주세요.");
+				$("#name").focus();
 				return;
 			}
 			
-			if(categoryIdx == ""){
-				alert("카테고리를 선택해주세요.");
-				$("#categoryIdx").focus();
+			if(workflow == ""){
+				alert("작업단계를 선택해주세요.");
+				$("#workflow").focus();
 				return;
 			}
-			
-			if(content == "" || content == "<p><br></p>"){
-				alert("내용을 입력해주세요.");
-				//$("#content").focus();
-				return;
-			}
-			
-			$("#content").val(content);
 			
 			$("#form")[0].submit();
+		}
+		
+		function checkNumber(event) {
+		  if(event.key >= 0 && event.key <= 9) {
+		    return true;
+		  }
+		  
+		  return false;
 		}
 	</script>
 </body>

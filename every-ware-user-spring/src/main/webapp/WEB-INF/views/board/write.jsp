@@ -30,7 +30,7 @@
 					<div class="mb-3">
 					  	<label for="receiver" class="form-label">카테고리</label>
 						<select class="form-select" aria-label="Default select example" id="categoryIdx" name="categoryIdx">
-						  <option value="" selected>게시글 유형을 선택해주세요.</option>
+						  <option value="" selected>선택</option>
 					    	<c:forEach items="${category}" var="item">
 					      		<option value="${item.categoryIdx}"${currentCategory eq item.categoryIdx ? ' selected="selected"' : ''}>${item.name}</option>
 					    	</c:forEach>
