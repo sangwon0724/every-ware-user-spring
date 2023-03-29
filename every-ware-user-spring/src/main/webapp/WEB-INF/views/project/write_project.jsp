@@ -63,9 +63,9 @@
 					<div class="mb-3">
 					  	<label class="form-label">계획기간</label>
 						<div class="planDate">
-	   						<input type="text" id="planDateSt" name="planDateSt" class="form-control" value="" />
+	   						<input type="text" id="planDateSt" name="planDateSt" class="form-control" value="" autocomplete="off" readonly="readonly"/>
 	   						<span> ~ </span>
-	   						<input type="text" id="planDateEd" name="planDateEd" class="form-control" value="" />
+	   						<input type="text" id="planDateEd" name="planDateEd" class="form-control" value="" autocomplete="off" readonly="readonly"/>
 						</div>
 					</div>
 					<div class="mb-3">
@@ -91,8 +91,6 @@
 					<div class="mb-3">
 						<button type="button" class="btn btn-primary" onclick="save(event)">저장</button>
 					</div>
-					
-					<input type="hidden" id="content" name="content" value=""/>
 				</form>
 			</div>
 		</main>

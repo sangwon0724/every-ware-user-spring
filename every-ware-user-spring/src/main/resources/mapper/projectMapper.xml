@@ -50,7 +50,7 @@
 			PI.IDX DESC
 	</select>
 
-	<!-- 프로젝트 목록 조회 (메뉴용)  -->
+	<!-- 프로젝트 목록 조회 (메뉴용) -->
 	<select id="selectProjectListForMenu" resultType="ProjectVO">
 		/* selectProjectListForMenu */
 		SELECT
@@ -95,8 +95,8 @@
 				WHEN WORKFLOW IS NULL THEN ''
 				ELSE (SELECT VALUE FROM CODE_INFO WHERE USE_YN = 'Y' AND GRP_CODE = 'PROJECT_WORKFLOW' AND CODE = WORKFLOW)
 			END AS WORKFLOW_NAME,
-			DATE_FORMAT(PLAN_DATE_ST,  '%Y-%m-%d') AS PLAN_DATE_ST,
-			DATE_FORMAT(PLAN_DATE_ED,  '%Y-%m-%d') AS PLAN_DATE_ED,
+			DATE_FORMAT(PLAN_DATE_ST, '%Y-%m-%d') AS PLAN_DATE_ST,
+			DATE_FORMAT(PLAN_DATE_ED, '%Y-%m-%d') AS PLAN_DATE_ED,
 			CONTRACT_AMOUNT,
 			WORK_AMOUNT,
 			WORK_USER_COUNT,
@@ -155,6 +155,108 @@
 			#{workUserCount},
 			#{outline},
 			#{significant},
+			SYSDATE()
+		)
+	</insert>
+
+	<!-- 일감 목록 조회 -->
+	<select id="selectWorkList" parameterType="hashmap" resultType="WorkVO">
+		/* selectWorkList */
+		SELECT
+			PWI.IDX,
+			PWI.PROJECT_IDX,
+			PI.NAME AS PROJECT_NAME,
+			PWI.WORKFLOW,
+			CASE
+				WHEN PWI.WORKFLOW IS NULL THEN ''
+				ELSE (SELECT VALUE FROM CODE_INFO WHERE USE_YN = 'Y' AND GRP_CODE = 'WORK_WORKFLOW' AND CODE = PWI.WORKFLOW)
+			END AS WORKFLOW_NAME,
+			DATE_FORMAT(WORK_DATE_ST, '%Y-%m-%d') AS PLAN_DATE_ST,
+			DATE_FORMAT(WORK_DATE_ED, '%Y-%m-%d') AS PLAN_DATE_ED,
+			PWI.TARGET_USER_IDX,
+			CASE
+				WHEN PWI.TARGET_USER_IDX IS NULL THEN ''
+				ELSE (SELECT NAME FROM USER_INFO WHERE USE_YN = 'Y' AND IDX = PWI.TARGET_USER_IDX)
+			END AS TARGET_USER_NAME,
+			PWI.TITLE,
+			PWI.CONTENT
+		FROM
+			PROJECT_WORK_INFO PWI
+			INNER JOIN PROJECT_INFO PI
+			ON PI.IDX = PWI.PROJECT_IDX
+			AND PI.USE_YN = 'Y'
+		WHERE
+			PWI.USE_YN = 'Y'
+			<if test="projectIdx != null and projectIdx != ''">
+				AND PWI.PROJECT_IDX = #{projectIdx}
+			</if>
+		ORDER BY
+			PWI.IDX DESC
+	</select>
+
+	<!-- 일감 상세 조회 -->
+	<select id="selectWorkDetail" parameterType="hashmap" resultType="WorkVO">
+		/* selectWorkDetail */
+		SELECT
+			PWI.IDX,
+			PWI.PROJECT_IDX,
+			PI.NAME AS PROJECT_NAME,
+			PWI.WORKFLOW,
+			CASE
+				WHEN PWI.WORKFLOW IS NULL THEN ''
+				ELSE (SELECT VALUE FROM CODE_INFO WHERE USE_YN = 'Y' AND GRP_CODE = 'WORK_WORKFLOW' AND CODE = PWI.WORKFLOW)
+			END AS WORKFLOW_NAME,
+			DATE_FORMAT(WORK_DATE_ST, '%Y-%m-%d') AS PLAN_DATE_ST,
+			DATE_FORMAT(WORK_DATE_ED, '%Y-%m-%d') AS PLAN_DATE_ED,
+			PWI.TARGET_USER_IDX,
+			CASE
+				WHEN PWI.TARGET_USER_IDX IS NULL THEN ''
+				ELSE (SELECT NAME FROM USER_INFO WHERE USE_YN = 'Y' AND IDX = PWI.TARGET_USER_IDX)
+			END AS TARGET_USER_NAME,
+			PWI.TITLE,
+			PWI.CONTENT
+		FROM
+			PROJECT_WORK_INFO PWI
+			INNER JOIN PROJECT_INFO PI
+			ON PI.IDX = PWI.PROJECT_IDX
+			AND PI.USE_YN = 'Y'
+		WHERE
+			PWI.USE_YN = 'Y'
+			AND PWI.IDX = #{idx}
+	</select>
+	
+	<!-- 일감 추가  -->
+	<insert id="insertWork" parameterType="WorkVO"  useGeneratedKeys="true" keyProperty="idx">
+		INSERT
+		INTO
+		PROJECT_WORK_INFO
+		(
+			PROJECT_IDX,
+			WORKFLOW,
+			TITLE,
+			CONTENT,
+			WORK_DATE_ST,
+			WORK_DATE_ED,
+			USER_IDX,
+			TARGET_USER_IDX,
+			REG_DATE
+		)
+		VALUES
+		(
+			#{projectIdx},
+			#{workflow},
+			#{title},
+			#{content},
+			<choose>
+				<when test="workDateSt == null or workDateSt == ''">NULL,</when>
+				<otherwise>#{workDateSt},</otherwise>
+			</choose>
+			<choose>
+				<when test="workDateEd == null or workDateEd == ''">NULL,</when>
+				<otherwise>#{workDateEd},</otherwise>
+			</choose>
+			#{userIdx},
+			#{targetUserIdx},
 			SYSDATE()
 		)
 	</insert>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.solution.groupware.mapper.ProjectMapper;
 import com.solution.groupware.vo.ProjectVO;
+import com.solution.groupware.vo.WorkVO;
 
 @Service
 public class ProjectService {
@@ -32,5 +33,26 @@ public class ProjectService {
 	//프로젝트 추가
 	public void insertProject(ProjectVO param) throws Exception {
 		projectMapper.insertProject(param);
+	};
+	
+	
+	
+	
+	
+	
+	
+	//일감 목록 조회
+	public List<WorkVO> selectWorkList(HashMap<String, Object> param) throws Exception {
+		return projectMapper.selectWorkList(param);
+	};
+	
+	//일감 상세 조회
+	public WorkVO selectWorkDetail(HashMap<String, Object> param) throws Exception {
+		return projectMapper.selectWorkDetail(param);
+	};
+	
+	//일감 추가
+	public void insertWork(WorkVO param) throws Exception {
+		projectMapper.insertWork(param);
 	};
 }

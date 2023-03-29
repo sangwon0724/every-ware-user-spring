@@ -20,6 +20,7 @@ import com.solution.groupware.service.ProjectService;
 import com.solution.groupware.setting.ConstValues;
 import com.solution.groupware.vo.ProjectVO;
 import com.solution.groupware.vo.UserVO;
+import com.solution.groupware.vo.WorkVO;
 
 /**
  * @packageName : 	com.solution.groupware.controller
@@ -105,14 +106,18 @@ public class ProjectController {
 			e.printStackTrace();
 		}
 		
-		return "redirect:/project/list_project";
+		return "redirect:/project/list";
 	}
 	
 	@GetMapping({"/work", "/work/{project}"})
 	public String workList(HttpServletRequest request, Model model, @PathVariable(required = false) Integer project) {
 		HashMap<String, Object> param = new HashMap<String, Object>();
+		if (project != null) {
+			param.put("projectIdx", project);
+		}
 		
 		try {
+			model.addAttribute("list", projectService.selectWorkList(param));
 			model.addAttribute("project", projectService.selectProjectListForMenu(param));
 			model.addAttribute("currentProject", project);
 		} catch (Exception e) {
@@ -125,8 +130,10 @@ public class ProjectController {
 	@GetMapping({"/work/detail/{idx}", "/work/detail/{project}/{idx}"})
 	public String workDetail(HttpServletRequest request, Model model, @PathVariable(required = false) Integer project, @PathVariable Integer idx) {
 		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("idx", idx);
 		
 		try {
+			model.addAttribute("detail", projectService.selectWorkDetail(param));
 			model.addAttribute("project", projectService.selectProjectListForMenu(param));
 			model.addAttribute("currentProject", project);
 		} catch (Exception e) {
@@ -147,12 +154,29 @@ public class ProjectController {
 			model.addAttribute("workflow", commonService.selectCodeList(param));
 			model.addAttribute("currentProject", project);
 			
-			//model.addAttribute("detail", boardService.selectProjectDetail(param));
+			//model.addAttribute("user", boardService.selectProjectDetail(param));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 		return "/project/write_work";
+	}
+	
+	@PostMapping("/save/work")
+	public String saveWork(HttpServletRequest request, Model model, WorkVO param) {
+		try {
+			HttpSession session = request.getSession();
+			UserVO userVO = (UserVO) session.getAttribute(ConstValues.SESSION_INFO);
+			int userIdx = userVO.getUserIdx();
+			
+			param.setUserIdx(userIdx);
+			
+			projectService.insertWork(param);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		return "redirect:/project/work";
 	}
 	
 	//회계

@@ -8,7 +8,7 @@
 <body>
 	<c:import url="../layout/header.jsp"/>
     <div id="common-wrapper">
-    	<main class="container-fluid project-body" style="justify-content: center;">
+    	<main class="container-fluid project-body">
 			<nav class="menu_list">
 				<div class="row">
 				  <div class="col-10">
@@ -26,7 +26,7 @@
 				<article class="blog-post">
 			        <h2 class="blog-post-title">${detail.title}</h2>
 			        
-			        <p class="blog-post-meta">작성자 : ${detail.writerUserName}</p>
+			        <p class="blog-post-meta">작성자 : </p>
 			        
 			        <div class="container-md p-3 mt-3 mb-3 border bg-light" style="background: white !important;">
 			        	<c:out value="${detail.content}" escapeXml="false" />

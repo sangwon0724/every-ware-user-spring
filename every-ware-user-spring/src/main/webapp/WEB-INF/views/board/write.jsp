@@ -28,7 +28,7 @@
 					  <input type="text" class="form-control" id="title" name="title" placeholder="제목을 입력해주세요.">
 					</div>
 					<div class="mb-3">
-					  	<label for="receiver" class="form-label">카테고리</label>
+					  	<label for="categoryIdx" class="form-label">카테고리</label>
 						<select class="form-select" aria-label="Default select example" id="categoryIdx" name="categoryIdx">
 						  <option value="" selected>선택</option>
 					    	<c:forEach items="${category}" var="item">

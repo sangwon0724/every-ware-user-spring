@@ -29,7 +29,6 @@
 						<col width="*">
 						<col width="20%">
 						<col width="10%">
-						<col width="15%">
 					</colgroup>
 					<thead>
 						<tr>
@@ -37,22 +36,20 @@
 							<th>제목</th>
 							<th>프로젝트</th>
 							<th>작성자</th>
-							<th>작성일자</th>
 						</tr>
 					</thead>
 					<tbody>
 						<c:forEach items="${list}" var="item">
 							<tr>
 								<td>${item.idx}</td>
-								<td><a href="/board/${currentCategory}/${item.idx}">${item.title}</a></td>
-								<td>${item.writerUserName}</td>
+								<td><a href="/project/work/detail${empty currentProject ? '' : '/'}${empty currentProject ? '' : currentProject}/${item.idx}">${item.title}</a></td>
+								<td>${item.userName}</td>
 								<td>${item.regDate}</td>
-								<td>${item.views}</td>
 							</tr>
 						</c:forEach>
 						<c:if test="${empty list or fn:length(list) eq 0}">
 							<tr>
-								<td colspan="5">
+								<td colspan="4">
 									데이터가 존재하지 않습니다.
 								</td>
 							</tr>
