@@ -49,7 +49,7 @@ public class UserController {
 		//임시 - 데이터 검증 과정 필요
 		if(userVO == null) {
 			userVO = new UserVO();
-			userVO.setUserIdx(7);
+			userVO.setIdx(7);
 			session.setAttribute("sessionInfo", userVO);
 		}
 
@@ -61,7 +61,7 @@ public class UserController {
 	@RequestMapping(value = "/logout", method = {RequestMethod.GET, RequestMethod.POST})
 	public String logout(HttpServletRequest request, HttpSession session) throws Exception {
 		//로그인 전의 페이지 주소를 String 변수에 저장
-		String referer = request.getHeader("Referer");
+		//String referer = request.getHeader("Referer");
 
 		//세션 무효화
 		session.invalidate();

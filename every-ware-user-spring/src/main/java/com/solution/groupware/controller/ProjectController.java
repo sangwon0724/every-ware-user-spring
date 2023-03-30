@@ -82,7 +82,7 @@ public class ProjectController {
 		
 		try {
 			model.addAttribute("dept", commonService.selectDeptList(param));
-			model.addAttribute("user", new ArrayList<String>());
+			model.addAttribute("user", commonService.selectUserList(param));
 			model.addAttribute("client", new ArrayList<String>());
 			model.addAttribute("workflow", commonService.selectCodeList(param));
 		} catch (Exception e) {
@@ -97,7 +97,7 @@ public class ProjectController {
 		try {
 			HttpSession session = request.getSession();
 			UserVO userVO = (UserVO) session.getAttribute(ConstValues.SESSION_INFO);
-			int userIdx = userVO.getUserIdx();
+			int userIdx = userVO.getIdx();
 			
 			param.setUserIdx(userIdx);
 			
@@ -145,16 +145,16 @@ public class ProjectController {
 	
 	@GetMapping({"/write/work", "/write/work/{project}"})
 	public String writeWork(HttpServletRequest request, Model model, @PathVariable(required = false) Integer project) {
-		
 		HashMap<String, Object> param = new HashMap<String, Object>();
+		param.put("grpCode", ConstValues.GRP_CODE.WORK_WORKFLOW.getValue());
 		param.put("projectIdx", project);
 		
 		try {
 			model.addAttribute("project", projectService.selectProjectListForMenu(param));
 			model.addAttribute("workflow", commonService.selectCodeList(param));
+			model.addAttribute("user", commonService.selectUserList(param));
 			model.addAttribute("currentProject", project);
 			
-			//model.addAttribute("user", boardService.selectProjectDetail(param));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -167,7 +167,7 @@ public class ProjectController {
 		try {
 			HttpSession session = request.getSession();
 			UserVO userVO = (UserVO) session.getAttribute(ConstValues.SESSION_INFO);
-			int userIdx = userVO.getUserIdx();
+			int userIdx = userVO.getIdx();
 			
 			param.setUserIdx(userIdx);
 			

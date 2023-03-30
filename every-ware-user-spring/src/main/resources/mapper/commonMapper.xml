@@ -37,4 +37,30 @@
 		ORDER BY
 			DI.ORDER_NO
 	</select>
+	
+	<!-- 회원 목록 조회  -->
+	<select id="selectUserList" parameterType="hashmap" resultType="UserVO">
+		/* selectUserList */
+		SELECT
+			UI.IDX,
+			UI.NAME,
+			UIHR.DEPT_IDX,
+			DI.NAME AS DEPT_NAME,
+			UIHR.ROLE_CODE AS ROLE_CODE,
+			CI_ROLE.VALUE AS ROLE_NAME
+		FROM
+			USER_INFO UI
+			LEFT OUTER JOIN USER_INFO_HR UIHR
+				ON UIHR.USER_IDX = UI.IDX
+			LEFT OUTER JOIN DEPT_INFO DI
+				ON DI.IDX = UIHR.DEPT_IDX
+			LEFT OUTER JOIN CODE_INFO CI_ROLE
+				ON CI_ROLE.CODE = UIHR.ROLE_CODE
+				AND CI_ROLE.GRP_CODE = 'COMPANY_ROLE'
+				AND CI_ROLE.USE_YN = 'Y'
+		WHERE
+			UI.USE_YN = 'Y'
+		ORDER BY
+			UI.IDX ASC
+	</select>
 </mapper>

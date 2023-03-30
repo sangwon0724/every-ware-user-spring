@@ -37,9 +37,9 @@
 					  	<label for="workflow" class="form-label">작업단계</label>
 						<select class="form-select" aria-label="Default select example" id="workflow" name="workflow">
 						  <option value="" selected>선택해주세요.</option>
-					    	<c:forEach items="${project}" var="item">
-					      		<option value="${item.idx}"${currentProject eq item.idx ? ' selected="selected"' : ''}>${item.name}</option>
-					    	</c:forEach>
+							<c:forEach items="${workflow}" var="item">${item}
+						    	<option value="${item.code}">${item.value}</option>
+							</c:forEach>
 						</select>
 					</div>
 					<div class="mb-3">
@@ -54,9 +54,9 @@
 					  	<label for="targetUserIdx" class="form-label">담당자</label>
 						<select class="form-select" aria-label="Default select example" id="targetUserIdx" name="targetUserIdx">
 						  <option value="" selected>선택해주세요.</option>
-					    	<c:forEach items="${project}" var="item">
-					      		<option value="${item.idx}"${currentProject eq item.idx ? ' selected="selected"' : ''}>${item.name}</option>
-					    	</c:forEach>
+							<c:forEach items="${user}" var="item">
+						    	<option value="${item.idx}">${item.name} ${item.roleName}</option>
+							</c:forEach>
 						</select>
 					</div>
 					<div class="mb-3">

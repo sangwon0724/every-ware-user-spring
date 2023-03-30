@@ -19,7 +19,7 @@
 					  	<label for="deptIdx" class="form-label">주관 팀</label>
 						<select class="form-select" aria-label="Default select example" id="deptIdx" name="deptIdx">
 						  	<option value="" selected>선택</option>
-					    	<c:forEach items="${desc}" var="item">
+					    	<c:forEach items="${dept}" var="item">
 					      		<option value="${item.idx}">${item.name}</option>
 					    	</c:forEach>
 						</select>
@@ -29,7 +29,7 @@
 						<select class="form-select" aria-label="Default select example" id="pmUserIdx" name="pmUserIdx">
 							<option value="" selected>선택</option>
 							<c:forEach items="${user}" var="item">
-						    	<option value="${item.idx}">${item.name}</option>
+						    	<option value="${item.idx}">${item.name} ${item.roleName}</option>
 							</c:forEach>
 						</select>
 					</div>
@@ -38,7 +38,7 @@
 						<select class="form-select" aria-label="Default select example" id="plUserIdx" name="plUserIdx">
 							<option value="" selected>선택</option>
 							<c:forEach items="${user}" var="item">
-						    	<option value="${item.idx}">${item.name}</option>
+						    	<option value="${item.idx}">${item.name} ${item.roleName}</option>
 							</c:forEach>
 						</select>
 					</div>

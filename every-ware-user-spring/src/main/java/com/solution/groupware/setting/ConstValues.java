@@ -4,7 +4,9 @@ public class ConstValues {
 	public final static String SESSION_INFO = "sessionInfo";
 	
 	public static enum GRP_CODE {
-		PROJECT_WORKFLOW("PROJECT_WORKFLOW");
+		PROJECT_WORKFLOW("PROJECT_WORKFLOW"),
+		WORK_WORKFLOW("WORK_WORKFLOW"),
+		COMPANY_ROLE("COMPANY_ROLE");
 		
 		private String value;
 		

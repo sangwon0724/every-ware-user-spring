@@ -40,7 +40,7 @@ public class ContactController {
 	public String receive(HttpServletRequest request, Model model) throws Exception {
 		HttpSession session = request.getSession();
 		UserVO userVO = (UserVO) session.getAttribute(ConstValues.SESSION_INFO);
-		int userIdx = userVO.getUserIdx();
+		int userIdx = userVO.getIdx();
 		
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		param.put("userIdx", userIdx);
@@ -54,7 +54,7 @@ public class ContactController {
 	public String send(HttpServletRequest request, Model model) throws Exception {
 		HttpSession session = request.getSession();
 		UserVO userVO = (UserVO) session.getAttribute(ConstValues.SESSION_INFO);
-		int userIdx = userVO.getUserIdx();
+		int userIdx = userVO.getIdx();
 		
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		param.put("userIdx", userIdx);
@@ -68,7 +68,7 @@ public class ContactController {
 	public String all(HttpServletRequest request, Model model) throws Exception {
 		HttpSession session = request.getSession();
 		UserVO userVO = (UserVO) session.getAttribute(ConstValues.SESSION_INFO);
-		int userIdx = userVO.getUserIdx();
+		int userIdx = userVO.getIdx();
 		
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		param.put("userIdx", userIdx);
@@ -82,7 +82,7 @@ public class ContactController {
 	public String trash(HttpServletRequest request, Model model) throws Exception {
 		HttpSession session = request.getSession();
 		UserVO userVO = (UserVO) session.getAttribute(ConstValues.SESSION_INFO);
-		int userIdx = userVO.getUserIdx();
+		int userIdx = userVO.getIdx();
 		
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		param.put("userIdx", userIdx);
@@ -96,7 +96,7 @@ public class ContactController {
 	public String write(HttpServletRequest request, Model model) throws Exception {
 		HttpSession session = request.getSession();
 		UserVO userVO = (UserVO) session.getAttribute(ConstValues.SESSION_INFO);
-		int userIdx = userVO.getUserIdx();
+		int userIdx = userVO.getIdx();
 		
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		param.put("userIdx", userIdx);
@@ -108,7 +108,7 @@ public class ContactController {
 	public String save(HttpServletRequest request, Model model) throws Exception {
 		HttpSession session = request.getSession();
 		UserVO userVO = (UserVO) session.getAttribute(ConstValues.SESSION_INFO);
-		int userIdx = userVO.getUserIdx();
+		int userIdx = userVO.getIdx();
 		
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		param.put("userIdx", userIdx); //작성자 회원 고유번호
@@ -126,7 +126,7 @@ public class ContactController {
 	public String detail(HttpServletRequest request, Model model, @PathVariable String category, @PathVariable Integer idx) throws Exception {
 		HttpSession session = request.getSession();
 		UserVO userVO = (UserVO) session.getAttribute(ConstValues.SESSION_INFO);
-		int userIdx = userVO.getUserIdx();
+		int userIdx = userVO.getIdx();
 		
 		HashMap<String, Object> param = new HashMap<String, Object>();
 		param.put("idx", idx);

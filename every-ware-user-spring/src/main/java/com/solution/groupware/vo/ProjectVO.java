@@ -6,6 +6,7 @@ import org.apache.ibatis.type.Alias;
 public class ProjectVO {
 	private int idx;
 	private int userIdx;
+	private String userName;
 	private String name;
 	private Integer deptIdx;
 	private String deptName;
@@ -26,6 +27,8 @@ public class ProjectVO {
 	private String significant;
 	private String regDate;
 	private String modDate;
+	private Integer targetserIdx;
+	private String targetUserName;
 	
 	public int getIdx() {
 		return idx;
@@ -39,6 +42,12 @@ public class ProjectVO {
 	}
 	public void setUserIdx(int userIdx) {
 		this.userIdx = userIdx;
+	}
+	public String getUserName() {
+		return userName;
+	}
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
 	public String getName() {
 		return name;
@@ -100,10 +109,10 @@ public class ProjectVO {
 	public void setWorkflow(String workflow) {
 		this.workflow = workflow;
 	}
-	public String getworkflowName() {
+	public String getWorkflowName() {
 		return workflowName;
 	}
-	public void setworkflowName(String workflowName) {
+	public void setWorkflowName(String workflowName) {
 		this.workflowName = workflowName;
 	}
 	public String getPlanDateSt() {
@@ -159,5 +168,17 @@ public class ProjectVO {
 	}
 	public void setModDate(String modDate) {
 		this.modDate = modDate;
+	}
+	public Integer getTargetserIdx() {
+		return targetserIdx;
+	}
+	public void setTargetserIdx(Integer targetserIdx) {
+		this.targetserIdx = targetserIdx;
+	}
+	public String getTargetUserName() {
+		return targetUserName;
+	}
+	public void setTargetUserName(String targetUserName) {
+		this.targetUserName = targetUserName;
 	}
 }

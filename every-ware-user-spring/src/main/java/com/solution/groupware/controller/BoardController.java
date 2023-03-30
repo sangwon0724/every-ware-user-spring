@@ -51,7 +51,7 @@ public class BoardController {
 
 		HttpSession session = request.getSession();
 		UserVO userVO = (UserVO) session.getAttribute(ConstValues.SESSION_INFO);
-		int userIdx = userVO.getUserIdx();
+		int userIdx = userVO.getIdx();
 		
 		data.setUserIdx(userIdx);
 		

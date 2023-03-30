@@ -26,7 +26,11 @@
 				<article class="blog-post">
 			        <h2 class="blog-post-title">${detail.title}</h2>
 			        
-			        <p class="blog-post-meta">작성자 : </p>
+			        <p class="blog-post-meta">작성자 : ${detail.userName}</p>
+			        <p class="blog-post-meta">작업단계 : ${detail.workflowName}</p>
+			        <p class="blog-post-meta">시작일자 : ${detail.workDateSt}</p>
+			        <p class="blog-post-meta">완료일자 : ${detail.workDateEd}</p>
+			        <p class="blog-post-meta">담당자 : ${detail.targetUserName}</p>
 			        
 			        <div class="container-md p-3 mt-3 mb-3 border bg-light" style="background: white !important;">
 			        	<c:out value="${detail.content}" escapeXml="false" />
@@ -34,6 +38,8 @@
 			        
 			        <p class="blog-post-meta">작성일시 : ${detail.regDate}</p>
 			      </article>
+			      <a href="/project/work${empty currentProject ? '' : '/'}${currentProject}" class="btn btn-primary me-3" onclick="login()">목록</a>
+			      <button type="button" class="btn btn-primary me-3" onclick="login()">댓글 추가</button>
 			</div>
 		</main>
     </div>
