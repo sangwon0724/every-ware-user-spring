@@ -30,6 +30,7 @@ import com.solution.groupware.setting.ConstValues;
 import com.solution.groupware.vo.ProjectVO;
 import com.solution.groupware.vo.UserVO;
 import com.solution.groupware.vo.WorkFileVO;
+import com.solution.groupware.vo.WorkReplyVO;
 import com.solution.groupware.vo.WorkVO;
 
 /**
@@ -149,6 +150,7 @@ public class ProjectController {
 			model.addAttribute("workflow", commonService.selectCodeList(param));
 			model.addAttribute("user", commonService.selectUserList(param));
 			model.addAttribute("currentProject", project);
+			model.addAttribute("reply", projectService.selectWorkReplyList(param));
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
@@ -192,23 +194,28 @@ public class ProjectController {
 		return "redirect:/project/work";
 	}
 	
+	@ResponseBody
 	@PostMapping("/work/reply/save")
-	public String saveWorkReply(HttpServletRequest request, Model model, WorkVO param) {
+	public HashMap<String, Object> saveWorkReply(HttpServletRequest request, Model model, WorkReplyVO param) {
+		HashMap<String, Object> result = new HashMap<String, Object>();
+		
 		try {
-			/*HttpSession session = request.getSession();
+			HttpSession session = request.getSession();
 			UserVO userVO = (UserVO) session.getAttribute(ConstValues.SESSION_INFO);
 			int userIdx = userVO.getIdx();
 			
 			param.setUserIdx(userIdx);
 			
-			projectService.insertWork(param);*/
+			projectService.insertWorkReply(param); //댓글 저장
+			projectService.updateWorkState(param); //일감 상태값 변경
+			projectService.updateWorkFileStateForReply(param);
 			
 			//temp_id를 통해서 파일 데이터의 work_reply_idx 채우기
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
-		return "redirect:/project/work";
+		return result;
 	}
 	
 	@ResponseBody
@@ -251,12 +258,10 @@ public class ProjectController {
 			projectService.insertWorkFile(workFileVO);
 			
 		} catch (IOException e) {
-			System.out.println("체크 : 1");
 			FileUtils.deleteQuietly(targetFile);	//저장된 파일 삭제
 			jsonObject.addProperty("responseCode", "error");
 			e.printStackTrace();
 		} catch (Exception e) {
-			System.out.println("체크 : 2");
 			e.printStackTrace();
 		}
 			

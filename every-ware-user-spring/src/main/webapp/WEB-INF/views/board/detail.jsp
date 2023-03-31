@@ -32,7 +32,7 @@
 			        </div>
 			        
 			        <p class="blog-post-meta">작성일시 : ${detail.regDate}</p>
-			      </article>
+		      </article>
 			</div>
 		</main>
     </div>

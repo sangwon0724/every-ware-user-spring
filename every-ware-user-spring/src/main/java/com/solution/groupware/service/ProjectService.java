@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import com.solution.groupware.mapper.ProjectMapper;
 import com.solution.groupware.vo.ProjectVO;
 import com.solution.groupware.vo.WorkFileVO;
+import com.solution.groupware.vo.WorkReplyVO;
 import com.solution.groupware.vo.WorkVO;
 
 @Service
@@ -57,8 +58,32 @@ public class ProjectService {
 		projectMapper.insertWork(param);
 	};
 	
+	//일감 댓글 추가
+	public void insertWorkReply(WorkReplyVO param) throws Exception {
+		projectMapper.insertWorkReply(param);
+	};
+	
 	//파일 저장
 	public void insertWorkFile(WorkFileVO param) throws Exception {
 		projectMapper.insertWorkFile(param);
-	}; 
+	};
+	
+	//일감 댓글 목록 조회
+	public List<WorkReplyVO> selectWorkReplyList(HashMap<String, Object> param) throws Exception {
+		return projectMapper.selectWorkReplyList(param);
+	};
+	
+	public void updateWorkState(WorkReplyVO param) throws Exception {
+		projectMapper.updateWorkState(param);
+	};
+	
+	//일감 파일 상태 수정
+	public void updateWorkFileState(WorkVO param) throws Exception {
+		projectMapper.updateWorkFileState(param);
+	};
+	
+	//일감 파일 상태 수정
+	public void updateWorkFileStateForReply(WorkReplyVO param) throws Exception {
+		projectMapper.updateWorkFileStateForReply(param);
+	};
 }

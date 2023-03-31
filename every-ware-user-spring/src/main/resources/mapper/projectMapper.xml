@@ -229,11 +229,27 @@
 			PWI.USE_YN = 'Y'
 			AND PWI.IDX = #{idx}
 	</select>
+
+	<!-- 일감 댓글 목록 조회 -->
+	<select id="selectWorkReplyList" parameterType="hashmap" resultType="WorkReplyVO">
+		/* selectWorkReplyList */
+		SELECT
+			CONTENT,
+			REG_DATE,
+			(SELECT NAME FROM USER_INFO WHERE IDX = PWR.USER_IDX) AS USER_NAME
+		FROM
+			PROJECT_WORK_REPLY PWR
+		WHERE
+			PWR.USE_YN = 'Y'
+			AND PWR.WORK_IDX = #{idx}
+		ORDER BY
+			PWR.IDX ASC
+	</select>
 	
 	<!-- 일감 추가  -->
-	<insert id="insertWork" parameterType="WorkVO"  useGeneratedKeys="true" keyProperty="idx">
-		INSERT
-		INTO
+	<insert id="insertWork" parameterType="WorkVO" useGeneratedKeys="true" keyProperty="idx">
+		/* insertWork */
+		INSERT INTO
 		PROJECT_WORK_INFO
 		(
 			PROJECT_IDX,
@@ -266,10 +282,51 @@
 		)
 	</insert>
 	
+	<!-- 일감 댓글 추가  -->
+	<insert id="insertWorkReply" parameterType="WorkReplyVO" useGeneratedKeys="true" keyProperty="idx">
+		/* insertWorkReply */
+		INSERT INTO
+		PROJECT_WORK_REPLY
+		(
+			PROJECT_IDX,
+			WORK_IDX,
+			USER_IDX,
+			CONTENT,
+			REG_DATE,
+			WORKFLOW,
+			TARGET_USER_IDX,
+			TEMP_ID
+		)
+		VALUES
+		(
+			#{projectIdx},
+			#{workIdx},
+			#{userIdx},
+			#{content},
+			SYSDATE(),
+			#{workflow},
+			#{targetUserIdx},
+			#{tempId}
+		)
+	</insert>
+	
+	<!-- 일감 상태 수정  -->
+	<update id="updateWorkState" parameterType="WorkReplyVO">
+		/* updateWorkState */
+		UPDATE
+			PROJECT_WORK_INFO
+		SET
+			WORKFLOW = #{workflow},
+			TARGET_USER_IDX = #{targetUserIdx},
+			MOD_DATE = SYSDATE()
+		WHERE
+			IDX = #{workIdx}
+	</update>
+	
 	<!-- 일감 파일 추가  -->
 	<insert id="insertWorkFile" parameterType="WorkFileVO">
-		INSERT
-		INTO
+		/* insertWorkFile */
+		INSERT INTO
 		PROJECT_WORK_FILE
 		(
 			PROJECT_IDX,
@@ -295,4 +352,29 @@
 			#{tempId}
 		)
 	</insert>
+	
+	<!-- 일감 파일 상태 수정  -->
+	<update id="updateWorkFileState" parameterType="WorkVO">
+		/* updateWorkFileState */
+		UPDATE
+			PROJECT_WORK_FILE
+		SET
+			WORK_IDX = #{idx},
+			MOD_DATE = SYSDATE()
+		WHERE
+			TEMP_ID = #{tempId}
+	</update>
+	
+	<!-- 일감 파일 상태 수정  -->
+	<update id="updateWorkFileStateForReply" parameterType="WorkReplyVO">
+		/* updateWorkFileStateForReply */
+		UPDATE
+			PROJECT_WORK_FILE
+		SET
+			WORK_IDX = #{workIdx},
+			WORK_REPLY_IDX = #{idx},
+			MOD_DATE = SYSDATE()
+		WHERE
+			TEMP_ID = #{tempId}
+	</update>
 </mapper>

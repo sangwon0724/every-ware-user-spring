@@ -37,39 +37,59 @@
 			        </div>
 			        
 			        <p class="blog-post-meta">작성일시 : ${detail.regDate}</p>
+			        
+					<input type="hidden" id="beforeWorkflow" value="${detail.workflow}"/>
+					<input type="hidden" id="beforeTargetUserIdx" value="${detail.targetUserIdx}"/>
 			      </article>
 			      <a href="/project/work${empty currentProject ? '' : '/'}${currentProject}" class="btn btn-primary me-3" onclick="login()">목록</a>
 			      <button type="button" id="loadReplyForm" class="btn btn-primary me-3" onclick="loadReplyForm()">댓글 추가</button>
 			      
+			      <c:forEach items="${reply}" var="item">
+			      		
+						<article class="blog-post">
+							<div class="container-md p-3 mt-3 mb-3 border bg-light" style="background: white !important;">
+					        	<p class="blog-post-meta">작성자 : ${item.userName}</p>
+					        	<p class="blog-post-meta">작성일시 : ${item.regDate}</p>
+					        	
+						        <div class="container-md p-3 mt-3 mb-3 border bg-light" style="background: white !important;">
+						        	<c:out value="${item.content}" escapeXml="false" />
+						        </div>
+					        </div>
+					        
+				      </article>
+			      </c:forEach>
+			      
 			      <article id="workForm" class="mt-3 mb-3">
-						<div class="mb-3">
-						  	<label for="workflow" class="form-label">작업단계</label>
-							<select class="form-select" aria-label="Default select example" id="workflow" name="workflow">
-							  <option value="" selected>선택해주세요.</option>
-								<c:forEach items="${workflow}" var="item">${item}
-							    	<option value="${item.code}"${item.code eq detail.workflow ? ' selected="selected"' : '' }>${item.value}</option>
-								</c:forEach>
-							</select>
-						</div>
-						<div class="mb-3">
-						  	<label for="targetUserIdx" class="form-label">담당자</label>
-							<select class="form-select" aria-label="Default select example" id="targetUserIdx" name="targetUserIdx">
-							  <option value="" selected>선택해주세요.</option>
-								<c:forEach items="${user}" var="item">
-							    	<option value="${item.idx}"${item.idx eq detail.targetUserIdx ? ' selected="selected"' : '' }>${item.name} ${item.roleName}</option>
-								</c:forEach>
-							</select>
-						</div>
-						<div class="mb-3">
-					  		<label for="summernote" class="form-label">내용</label>
-					  		<textarea class="form-control" id="summernote" name="editordata"></textarea>
-						</div>
-						<input type="hidden" id="projectIdx" name="projectIdx" value="${detail.projectIdx}"/>
-						<input type="hidden" id="workIdx" name="workIdx" value="${detail.idx}"/>
-						<input type="hidden" id="content" name="content" value=""/>
-						<input type="hidden" id="tempId" name="tempId" value=""/>
-			      		<button type="button" id="saveReplyForm" class="btn btn-primary me-3" onclick="saveReplyForm()">저장</button>
-			      		<button type="button" id="cancleReplyForm" class="btn btn-primary me-3" onclick="cancleReplyForm()">취소</button>
+						<form action="/project/work/reply/save" method="post">
+							<div class="mb-3">
+							  	<label for="workflow" class="form-label">작업단계</label>
+								<select class="form-select" aria-label="Default select example" id="workflow" name="workflow">
+								  <option value="" selected>선택해주세요.</option>
+									<c:forEach items="${workflow}" var="item">${item}
+								    	<option value="${item.code}"${item.code eq detail.workflow ? ' selected="selected"' : '' }>${item.value}</option>
+									</c:forEach>
+								</select>
+							</div>
+							<div class="mb-3">
+							  	<label for="targetUserIdx" class="form-label">담당자</label>
+								<select class="form-select" aria-label="Default select example" id="targetUserIdx" name="targetUserIdx">
+								  <option value="" selected>선택해주세요.</option>
+									<c:forEach items="${user}" var="item">
+								    	<option value="${item.idx}"${item.idx eq detail.targetUserIdx ? ' selected="selected"' : '' }>${item.name} ${item.roleName}</option>
+									</c:forEach>
+								</select>
+							</div>
+							<div class="mb-3">
+						  		<label for="summernote" class="form-label">내용</label>
+						  		<textarea class="form-control" id="summernote" name="editordata"></textarea>
+							</div>
+							<input type="hidden" id="projectIdx" name="projectIdx" value="${detail.projectIdx}"/>
+							<input type="hidden" id="workIdx" name="workIdx" value="${detail.idx}"/>
+							<input type="hidden" id="content" name="content" value=""/>
+							<input type="hidden" id="tempId" name="tempId" value=""/>
+				      		<button type="button" class="btn btn-primary me-3" onclick="saveReplyForm()">저장</button>
+				      		<button type="button" class="btn btn-primary me-3" onclick="cancleReplyForm()">취소</button>
+						</form>
 			      </article>
 			</div>
 		</main>
@@ -111,7 +131,7 @@
 			data = new FormData();
 			data.append("file", file);
 			data.append("projectIdx", $("#projectIdx").val());
-			data.append("idx", $("#workIdx").val());
+			data.append("workIdx", $("#workIdx").val());
 			data.append("tempId", $("#tempId").val());
 			
 			$.ajax({
@@ -139,7 +159,8 @@
 			var workflow = $("#workflow").val();
 			var targetUserIdx = $("#targetUserIdx").val();
 			
-			var content = $('#summernote').summernote('code');
+			var content_value = $('#summernote').summernote('code');
+			var content = "";
 			
 			if(workflow == ""){
 				alert("작업단계를 선택해주세요.");
@@ -153,16 +174,61 @@
 				return;
 			}
 			
-			if(content == "" || content == "<p><br></p>"){
+			if(content_value == "" || content_value == "<p><br></p>"){
 				alert("내용을 입력해주세요.");
 				//$("#content").focus();
 				return;
 			}
 			
+			if(workflow == ""){
+				alert("작업단계를 선택해주세요.");
+				$("#workflow").focus();
+				return;
+			}
+			
+			if(workflow == ""){
+				alert("작업단계를 선택해주세요.");
+				$("#workflow").focus();
+				return;
+			}
+			
+			if(targetUserIdx == ""){
+				alert("담당자를 선택해주세요.");
+				$("#targetUserIdx").focus();
+				return;
+			}
+			
+			if(workflow != $("#beforeWorkflow").val()){
+				var beforeWorkflowName = $("#workflow option[value="+$("#beforeWorkflow").val()+"]").text();
+				var currentWorkflowName = $("#workflow option[value="+workflow+"]").text();
+				content += "<p><strong>· 상태을(를) "+beforeWorkflowName+"에서 "+currentWorkflowName+"(으)로 변경하였습니다.</strong></p>";
+			}
+			
+			if(targetUserIdx != $("#beforeTargetUserIdx").val()){
+				var beforeTargetUserName = $("#targetUserIdx option[value="+$("#beforeTargetUserIdx").val()+"]").text();
+				var currentTargetUserName = $("#targetUserIdx option[value="+targetUserIdx+"]").text();
+				content += "<p><strong>· 담당자을(를) "+beforeTargetUserName+"에서 "+currentTargetUserName+"(으)로 변경하였습니다.</strong></p>";
+			}
+			
+			content += content_value;
 			$("#content").val(content);
 			
 			//ajax
-			//
+			var option = {
+			    dataType : 'json',
+				type : "POST",
+			    url: "/project/work/reply/save",
+			    success: function(res){
+			        //alert("등록이 완료되었습니다.""); //res Object안에 msg에는 결과 메시지가 담겨있습니다.
+			        window.location.reload();
+			    },
+			    error: function(res){
+			        console.log(res);
+			        alert("에러가 발생했습니다.");
+			    }
+			};
+			
+			$("#workForm > form").ajaxSubmit(option);
     	}
     	
     	//댓글 추가 폼 숨기기
