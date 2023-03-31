@@ -18,3 +18,17 @@ function login(){
 function logout(){
 	location.href = "/user/logout";
 }
+
+/** 위치 이동 */
+function remotePosition(type){
+	switch (type) {
+	case "up":
+		window.scrollTo(0, 0);
+		break;
+	case "down":
+		window.scrollTo(0, $("body").height());
+		break;
+	default:
+		break;
+	}
+}

@@ -12,13 +12,19 @@
 			<nav class="menu_list">
 				<div class="row">
 				  <div class="col-10">
-				    <div class="list-group" id="list-tab" role="tablist">
+				    <div class="list-group pt-3" id="list-tab" role="tablist">
 			      		<a class="list-group-item list-group-item-action${empty currentProject ? ' active' : ''}" id="list-home-list" href="/project/work" role="tab">전체</a>
 				    	<c:forEach items="${project}" var="item">
 				      		<a class="list-group-item list-group-item-action${currentProject eq item.idx ? ' active' : ''}" id="list-home-list" href="/project/work/${item.idx}" role="tab">${item.name}</a>
 				    	</c:forEach>
 				    </div>
 				  </div>
+				  <%-- <div class="col-10 mt-3 mb-3">
+			      	<a href="/project/work${empty currentProject ? '' : '/'}${currentProject}" class="btn btn-primary col-12">목록</a>
+				  </div>
+				  <div class="col-10">
+			      	<button type="button" id="loadReplyForm" class="btn btn-primary col-12" onclick="loadReplyForm()">댓글 추가</button>
+				  </div> --%>
 				</div>
 			</nav>
 			
@@ -41,12 +47,14 @@
 					<input type="hidden" id="beforeWorkflow" value="${detail.workflow}"/>
 					<input type="hidden" id="beforeTargetUserIdx" value="${detail.targetUserIdx}"/>
 			      </article>
-			      <a href="/project/work${empty currentProject ? '' : '/'}${currentProject}" class="btn btn-primary me-3" onclick="login()">목록</a>
+			      <a href="/project/work${empty currentProject ? '' : '/'}${currentProject}" class="btn btn-primary me-3">목록</a>
 			      <button type="button" id="loadReplyForm" class="btn btn-primary me-3" onclick="loadReplyForm()">댓글 추가</button>
+			      
+			      <hr id="work_hr" class="${empty reply ? 'hide' : ''}"/>
 			      
 			      <c:forEach items="${reply}" var="item">
 			      		
-						<article class="blog-post">
+						<article class="blog-post work-reply">
 							<div class="container-md p-3 mt-3 mb-3 border bg-light" style="background: white !important;">
 					        	<p class="blog-post-meta">작성자 : ${item.userName}</p>
 					        	<p class="blog-post-meta">작성일시 : ${item.regDate}</p>
@@ -94,6 +102,10 @@
 			</div>
 		</main>
     </div>
+    <nav id="remote_btn">
+    	<i class="fa-solid fa-caret-up" onclick="remotePosition('up')"></i>
+    	<i class="fa-solid fa-caret-down" onclick="remotePosition('down')"></i>
+    </nav>
     
     <script type="text/javascript">
     	$(document).ready(function(){
@@ -152,6 +164,9 @@
 			$("#workForm").addClass("active");
 			$("#loadReplyForm").addClass("hide");
 			$("#tempId").val(self.crypto.randomUUID());
+			if($(".work-reply").length == 0){
+				$("#work_hr").removeClass("hide");
+			}
 			document.getElementById("workForm").scrollIntoView({behavior: 'smooth'});
     	}
     	
@@ -236,6 +251,9 @@
     	function cancleReplyForm(){
 			$("#workForm").removeClass("active");
 			$("#loadReplyForm").removeClass("hide");
+			if($(".work-reply").length == 0){
+				$("#work_hr").addClass("hide");
+			}
     	}
     </script>
 </body>
