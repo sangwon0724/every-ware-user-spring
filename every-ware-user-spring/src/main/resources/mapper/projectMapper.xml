@@ -265,4 +265,34 @@
 			SYSDATE()
 		)
 	</insert>
+	
+	<!-- 일감 파일 추가  -->
+	<insert id="insertWorkFile" parameterType="WorkFileVO">
+		INSERT
+		INTO
+		PROJECT_WORK_FILE
+		(
+			PROJECT_IDX,
+			WORK_IDX,
+			USER_IDX,
+			FILE_PATH,
+			FILE_NAME,
+			FILE_SIZE,
+			FILE_TYPE,
+			REG_DATE,
+			TEMP_ID
+		)
+		VALUES
+		(
+			#{projectIdx},
+			#{workIdx},
+			#{userIdx},
+			#{filePath},
+			#{fileName},
+			#{fileSize},
+			#{fileType},
+			SYSDATE(),
+			#{tempId}
+		)
+	</insert>
 </mapper>

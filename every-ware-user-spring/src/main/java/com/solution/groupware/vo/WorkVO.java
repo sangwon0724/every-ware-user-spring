@@ -15,10 +15,11 @@ public class WorkVO {
 	private String workDateEd;
 	private int userIdx;
 	private String userName;
-	private int targetUserIdx;
+	private Integer targetUserIdx;
 	private String targetUserName;
 	private String regDate;
 	private String modDate;
+	private String tempId;
 	
 	public int getIdx() {
 		return idx;
@@ -86,10 +87,10 @@ public class WorkVO {
 	public void setUserName(String userName) {
 		this.userName = userName;
 	}
-	public int getTargetUserIdx() {
+	public Integer getTargetUserIdx() {
 		return targetUserIdx;
 	}
-	public void setTargetUserIdx(int targetUserIdx) {
+	public void setTargetUserIdx(Integer targetUserIdx) {
 		this.targetUserIdx = targetUserIdx;
 	}
 	public String getTargetUserName() {
@@ -109,5 +110,11 @@ public class WorkVO {
 	}
 	public void setModDate(String modDate) {
 		this.modDate = modDate;
+	}
+	public String getTempId() {
+		return tempId;
+	}
+	public void setTempId(String tempId) {
+		this.tempId = tempId;
 	}
 }

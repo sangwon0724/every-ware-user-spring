@@ -26,9 +26,6 @@ public class HomeController {
 	
 	private static final Logger logger = LoggerFactory.getLogger(HomeController.class);
 	
-	/**
-	 * Simply selects the home view to render by returning its name.
-	 */
 	@GetMapping("/")
 	public String home(HttpServletRequest request, Model model) {
 		HttpSession session = request.getSession();

@@ -19,8 +19,9 @@ body::-webkit-scrollbar {
 }
 
 /* 숨김 처리 */
-.hidden {
-	display: none;
+.hidden,
+.hide {
+	display: none !important;
 }
 
 /* flex center center */

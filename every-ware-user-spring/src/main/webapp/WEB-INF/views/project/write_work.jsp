@@ -23,7 +23,7 @@
 			</nav>
 			
 			<div class="content write">
-				<form action="/project/save/work" method="post" id="form">
+				<form action="/project/work/save" method="post" id="form">
 					<div class="mb-3">
 					  	<label for="projectIdx" class="form-label">프로젝트</label>
 						<select class="form-select" aria-label="Default select example" id="projectIdx" name="projectIdx">

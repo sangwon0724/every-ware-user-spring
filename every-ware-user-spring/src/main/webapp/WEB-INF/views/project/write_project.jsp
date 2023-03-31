@@ -10,7 +10,7 @@
     <div id="common-wrapper">
     	<main class="container-fluid project-body" style="justify-content: center;">
 			<div class="content write">
-				<form action="/project/save/project" method="post" id="form">
+				<form action="/project/save" method="post" id="form">
 					<div class="mb-3">
 					  <label for="name" class="form-label">프로젝트명</label>
 					  <input type="text" class="form-control" id="name" name="name" placeholder="프로젝트명을 입력해주세요.">

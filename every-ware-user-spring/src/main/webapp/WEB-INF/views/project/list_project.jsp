@@ -60,7 +60,7 @@
 				      </a>
 				    </li> -->
 				  </ul>
-				  <a href="/project/write/project" class="btn btn-primary">프로젝트 등록</a>
+				  <a href="/project/write" class="btn btn-primary">프로젝트 등록</a>
 				</footer>
 			</div>
 		</main>

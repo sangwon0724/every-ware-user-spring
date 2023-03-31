@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.solution.groupware.mapper.ProjectMapper;
 import com.solution.groupware.vo.ProjectVO;
+import com.solution.groupware.vo.WorkFileVO;
 import com.solution.groupware.vo.WorkVO;
 
 @Service
@@ -55,4 +56,9 @@ public class ProjectService {
 	public void insertWork(WorkVO param) throws Exception {
 		projectMapper.insertWork(param);
 	};
+	
+	//파일 저장
+	public void insertWorkFile(WorkFileVO param) throws Exception {
+		projectMapper.insertWorkFile(param);
+	}; 
 }

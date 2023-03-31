@@ -73,7 +73,7 @@
 				      </a>
 				    </li> -->
 				  </ul>
-				  <a href="/project/write/work${not empty currentProject ? '/' : ''}${currentProject}" class="btn btn-primary">일감 등록</a>
+				  <a href="/project/work/write${not empty currentProject ? '/' : ''}${currentProject}" class="btn btn-primary">일감 등록</a>
 				</footer>
 			</div>
 		</main>

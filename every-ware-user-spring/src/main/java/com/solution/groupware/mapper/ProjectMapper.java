@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 
 import com.solution.groupware.vo.ProjectVO;
+import com.solution.groupware.vo.WorkFileVO;
 import com.solution.groupware.vo.WorkVO;
 
 public interface ProjectMapper {
@@ -17,5 +18,6 @@ public interface ProjectMapper {
 	//insert
 	public void insertProject(ProjectVO param) throws Exception; //프로젝트 추가
 	public void insertWork(WorkVO param) throws Exception; //일감 추가
+	public void insertWorkFile(WorkFileVO param) throws Exception; //파일 저장
 	
 }
