@@ -88,10 +88,10 @@
             마이페이지
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-		    <li><a class="dropdown-item" href="/mypage/info">내 인사정보</a></li>
+		    <!-- <li><a class="dropdown-item" href="/mypage/info">내 인사정보</a></li> -->
 		    <li><a class="dropdown-item" href="/mypage/attendance">출근부</a></li>
 		    <li><a class="dropdown-item" href="/mypage/annual">연차 관리</a></li>
-		    <li><a class="dropdown-item" href="/mypage/salary">급여 조회</a></li>
+		    <!-- <li><a class="dropdown-item" href="/mypage/salary">급여 조회</a></li> -->
 		    <li><a class="dropdown-item" href="/mypage/certificate">증명서 발급</a></li>
 		    <li><a class="dropdown-item" href="/mypage/setting">설정</a></li>
           </ul>
