@@ -152,6 +152,7 @@
 			$("#workForm").addClass("active");
 			$("#loadReplyForm").addClass("hide");
 			$("#tempId").val(self.crypto.randomUUID());
+			document.getElementById("workForm").scrollIntoView({behavior: 'smooth'});
     	}
     	
     	//댓글 저장
