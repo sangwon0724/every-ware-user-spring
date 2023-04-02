@@ -58,4 +58,13 @@ public class SampleController {
 		
 		return "rest.sample";
 	}
+	
+	/**
+	 * 보고
+	*/
+	@GetMapping("/report")
+	public String report(HttpServletRequest request, Model model) throws Exception {
+		
+		return "report.sample";
+	}
 }

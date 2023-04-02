@@ -8,8 +8,8 @@
 		  <div class="col-10">
 		    <div class="list-group" id="list-tab" role="tablist">
 		      <a class="list-group-item list-group-item-action" id="list-home-list" href="/sample/reserve" role="tab">예약</a>
-		      <a class="list-group-item list-group-item-action active" id="list-home-list" href="/sample/certificate" role="tab">증명서 발급</a>
-		      <a class="list-group-item list-group-item-action" id="list-home-list" href="/sample/contract" role="tab">전자계약</a>
+		      <a class="list-group-item list-group-item-action" id="list-home-list" href="/sample/certificate" role="tab">증명서 발급</a>
+		      <a class="list-group-item list-group-item-action active" id="list-home-list" href="/sample/contract" role="tab">전자계약</a>
 		      <!-- <a class="list-group-item list-group-item-action" id="list-home-list" href="/sample/rest" role="tab">연차 관리</a>
 		      <a class="list-group-item list-group-item-action" id="list-home-list" href="/sample/report" role="tab">보고</a> -->
 		    </div>
@@ -30,53 +30,21 @@
 			<thead>
 				<tr>
 					<th>번호</th>
-					<th>증명서 종류</th>
-					<th>용도</th>
-					<th>발급요청 일자</th>
+					<th>계약서 종류</th>
+					<th>요청 일자</th>
+					<th>작성 일자</th>
 					<th>상태</th>
-					<th>발급</th>
+					<th>작성·확인</th>
 				</tr>
 			</thead>
 			<tbody>
 				<tr>
-					<td>5</td>
-					<td>경력증명서</td>
-					<td>은행제출</td>
-					<td>2023-03-22</td>
-					<td>대기</td>
-					<td>-</td>
-				</tr>
-				<tr>
-					<td>4</td>
-					<td>재직증명서</td>
-					<td>은행제출</td>
-					<td>2023-03-22</td>
-					<td>승인</td>
-					<td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">발급</button></td>
-				</tr>
-				<tr>
-					<td>3</td>
-					<td>경력증명서</td>
-					<td>은행제출</td>
-					<td>2022-12-18</td>
-					<td>발급기간 초과</td>
-					<td>-</td>
-				</tr>
-				<tr>
-					<td>2</td>
-					<td>원천징수영수증</td>
-					<td>은행제출</td>
-					<td>2022-09-20</td>
-					<td>발급기간 초과</td>
-					<td>-</td>
-				</tr>
-				<tr>
 					<td>1</td>
-					<td>재직증명서</td>
-					<td>은행제출</td>
-					<td>2022-09-03</td>
-					<td>발급기간 초과</td>
-					<td>-</td>
+					<td>근로계약서</td>
+					<td>2023-03-22</td>
+					<td>2023-03-22</td>
+					<td>진행</td>
+					<td><button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">작성</button></td>
 				</tr>
 			</tbody>
 		</table>
@@ -105,44 +73,11 @@
 	  <div class="modal-dialog">
 	    <div class="modal-content">
 	      <div class="modal-header">
-	        <h5 class="modal-title" id="exampleModalLabel">재직증명서</h5>
+	        <h5 class="modal-title" id="exampleModalLabel">보안서약서</h5>
 	        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 	      </div>
 	      <div class="modal-body">
-	        <table id="certificate" class="table table-hover table-bordered border-primary align-middle">
-				<colgroup>
-					<col width="20%">
-					<col width="*">
-				</colgroup>
-				<thead>
-					<tr>
-						<th>항목명</th>
-						<th>내용</th>
-					</tr>
-				</thead>
-				<tbody>
-					<tr>
-						<td>문서번호</td>
-						<td>A22-20230322</td>
-					</tr>
-					<tr>
-						<td>성명</td>
-						<td>이상원</td>
-					</tr>
-					<tr>
-						<td>회사명</td>
-						<td>크림하우스</td>
-					</tr>
-					<tr>
-						<td>소속</td>
-						<td>개발 3팀</td>
-					</tr>
-					<tr>
-						<td>발급요청일</td>
-						<td>2023-03-22</td>
-					</tr>
-				</tbody>
-			</table>
+	        <p><strong>크림하우스주식회사</strong>(이하 'A'와) <input type="text" placeholder="홍길동" style="width: auto;"/>(이하 'B')은(는) 다음과 같이 근로계약을 체결합니다.</p>
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>

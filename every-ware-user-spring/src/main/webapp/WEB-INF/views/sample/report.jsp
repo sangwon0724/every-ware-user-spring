@@ -7,7 +7,11 @@
 		<div class="row">
 		  <div class="col-10">
 		    <div class="list-group" id="list-tab" role="tablist">
-		      <a class="list-group-item list-group-item-action active" id="list-home-list" href="/sample/reserve" role="tab">예약</a>
+		      <a class="list-group-item list-group-item-action" id="list-home-list" href="/sample/reserve" role="tab">예약</a>
+		      <a class="list-group-item list-group-item-action" id="list-home-list" href="/sample/certificate" role="tab">증명서 발급</a>
+		      <a class="list-group-item list-group-item-action" id="list-home-list" href="/sample/contract" role="tab">전자계약</a>
+		      <a class="list-group-item list-group-item-action" id="list-home-list" href="/sample/rest" role="tab">연차 관리</a>
+		      <a class="list-group-item list-group-item-action active" id="list-home-list" href="/sample/report" role="tab">보고</a>
 		    </div>
 		  </div>
 		</div>

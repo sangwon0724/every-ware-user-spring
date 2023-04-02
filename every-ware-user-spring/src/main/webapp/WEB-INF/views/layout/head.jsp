@@ -9,6 +9,7 @@
 	<%-- <link href="<c:url value="/resources/css/reset.css" />" rel="stylesheet" type="text/css"> --%>
 	<link href="<c:url value="/resources/css/common.css" />" rel="stylesheet" type="text/css">
 	
+	<link href="<c:url value="/resources/css/dashboard.css" />" rel="stylesheet" type="text/css">
 	<link href="<c:url value="/resources/css/contact.css" />" rel="stylesheet" type="text/css">
 	<link href="<c:url value="/resources/css/board.css" />" rel="stylesheet" type="text/css">
 	<link href="<c:url value="/resources/css/project.css" />" rel="stylesheet" type="text/css">
