@@ -47,13 +47,11 @@
 		<beans:property name="maxUploadSize" value="100000000"></beans:property>
 	</beans:bean>
 
-	<!--
 	<mvc:interceptors>
 	    <mvc:interceptor>                                  	                                      
-	        <mvc:mapping path="/**/*.do" />                                                 
-	        <mvc:exclude-mapping path="/login" />
-			<beans:bean class="com.solution.groupware.interceptor.testInterceptor"/>
+	        <mvc:mapping path="/**" />                                                 
+	        <mvc:exclude-mapping path="/user/login" />
+			<beans:bean class="com.solution.groupware.interceptor.LoginInterceptor"/>
 	    </mvc:interceptor>
 	</mvc:interceptors>
-	-->
 </beans:beans>

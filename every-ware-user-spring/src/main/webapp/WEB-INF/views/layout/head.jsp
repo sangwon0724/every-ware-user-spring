@@ -12,6 +12,7 @@
 	<link href="<c:url value="/resources/css/contact.css" />" rel="stylesheet" type="text/css">
 	<link href="<c:url value="/resources/css/board.css" />" rel="stylesheet" type="text/css">
 	<link href="<c:url value="/resources/css/project.css" />" rel="stylesheet" type="text/css">
+	<link href="<c:url value="/resources/css/sample.css" />" rel="stylesheet" type="text/css">
 	
 	<!-- jQuery -->
 	<script type="text/javascript" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>

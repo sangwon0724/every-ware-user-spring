@@ -104,4 +104,15 @@
     <definition name="*/*/*.mypage" extends="common_tiles">
         <put-attribute name="contents" value="/WEB-INF/views/mypage/{1}/{2}/{3}.jsp" />
     </definition>
+
+    <!-- 샘플 -->
+    <definition name="*.sample" extends="common_tiles">
+        <put-attribute name="content" value="/WEB-INF/views/sample/{1}.jsp" />
+    </definition>
+    <definition name="*/*.sample" extends="common_tiles">
+        <put-attribute name="contents" value="/WEB-INF/views/sample/{1}/{2}.jsp" />
+    </definition>
+    <definition name="*/*/*.sample" extends="common_tiles">
+        <put-attribute name="contents" value="/WEB-INF/views/sample/{1}/{2}/{3}.jsp" />
+    </definition>
 </tiles-definitions>

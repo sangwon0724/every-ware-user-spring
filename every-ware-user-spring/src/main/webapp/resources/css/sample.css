@@ -1,0 +1,51 @@
+@charset "UTF-8";
+
+.sample-body{
+	display: flex;
+    padding-top: 3vh;
+}
+
+.sample-body nav.menu_list{
+	width: 13vw;
+	min-width: 200px;
+}
+
+.sample-body nav.menu_list .row{
+    position: sticky;
+    top: 0;
+}
+
+.sample-body .content table thead tr{
+	/* background-color: #f2f2f2; */
+}
+
+.sample-body .content table tbody tr td a{
+	text-decoration: none;
+}
+
+.sample-body .content table tr th,
+.sample-body .content table tr td
+{
+	text-align: center;
+}
+
+.sample-body .content{
+	width: 80vw;
+}
+.sample-body .content table#reserve tr {
+	height: 5vh;
+}
+.sample-body .content table#reserve tr td{
+	width: 3vw;
+	max-width: 3vw;
+}
+.sample-body .content table#reserve td[colspan]:not(.header) {
+	background-color: #4696fd;
+	color: white;
+}
+
+
+/* 글쓰기 */
+.sample-body .content.write{
+	width: 65vw;
+}

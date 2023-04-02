@@ -83,17 +83,26 @@
 		    <!-- <li><a class="dropdown-item" href="/project/accounting">프로젝트 회계</a></li> -->
           </ul>
         </li>
-        <li class="nav-item dropdown">
+        <!-- <li class="nav-item dropdown">
           <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white !important;">
             마이페이지
           </a>
           <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
-		    <!-- <li><a class="dropdown-item" href="/mypage/info">내 인사정보</a></li> -->
+		    <li><a class="dropdown-item" href="/mypage/info">내 인사정보</a></li>
 		    <li><a class="dropdown-item" href="/mypage/attendance">출근부</a></li>
 		    <li><a class="dropdown-item" href="/mypage/annual">연차 관리</a></li>
-		    <!-- <li><a class="dropdown-item" href="/mypage/salary">급여 조회</a></li> -->
+		    <li><a class="dropdown-item" href="/mypage/salary">급여 조회</a></li>
 		    <li><a class="dropdown-item" href="/mypage/certificate">증명서 발급</a></li>
 		    <li><a class="dropdown-item" href="/mypage/setting">설정</a></li>
+          </ul>
+        </li> -->
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarScrollingDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white !important;">
+            샘플
+          </a>
+          <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
+		    <li><a class="dropdown-item" href="/sample/reserve">예약</a></li>
+		    <li><a class="dropdown-item" href="/sample/certificate">증명서 발급</a></li>
           </ul>
         </li>
       </ul>
