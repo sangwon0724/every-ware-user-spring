@@ -26,7 +26,7 @@
 </header>
 <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
   <div class="container-fluid">
-    <a class="navbar-brand dropdown-toggle" href="/">내 책상</a>
+    <a class="navbar-brand dropdown-toggle" href="/">대시보드</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarScroll" aria-controls="navbarScroll" aria-expanded="false" aria-label="Toggle navigation">
       <span class="navbar-toggler-icon"></span>
     </button>
@@ -103,6 +103,11 @@
           <ul class="dropdown-menu" aria-labelledby="navbarScrollingDropdown">
 		    <li><a class="dropdown-item" href="/sample/reserve">예약</a></li>
 		    <li><a class="dropdown-item" href="/sample/certificate">증명서 발급</a></li>
+		    <li><a class="dropdown-item" href="/sample/contract">전자계약</a></li>
+		    <li><a class="dropdown-item" href="/sample/rest">연차 관리</a></li>
+		    <li><a class="dropdown-item" href="/sample/rest">전사 업무 (월급지급/연말정산)</a></li>
+		    <li><a class="dropdown-item" href="/sample/rest">채용</a></li>
+		    <li><a class="dropdown-item" href="/sample/rest">보고</a></li>
           </ul>
         </li>
       </ul>

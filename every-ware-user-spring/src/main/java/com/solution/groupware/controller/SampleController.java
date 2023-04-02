@@ -40,4 +40,22 @@ public class SampleController {
 		
 		return "certificate.sample";
 	}
+	
+	/**
+	 * 전자계약
+	*/
+	@GetMapping("/contract")
+	public String contract(HttpServletRequest request, Model model) throws Exception {
+		
+		return "contract.sample";
+	}
+	
+	/**
+	 * 연차관리
+	*/
+	@GetMapping("/rest")
+	public String rest(HttpServletRequest request, Model model) throws Exception {
+		
+		return "rest.sample";
+	}
 }
