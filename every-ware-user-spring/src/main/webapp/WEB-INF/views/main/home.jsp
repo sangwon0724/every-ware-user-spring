@@ -41,7 +41,7 @@
 	        </div>
 		</main>
 		<footer>
-			<button type="button" class="btn btn-outline-secondary me-3" onclick="">출근하기</button>
+			<button type="button" class="btn btn-outline-secondary me-3" onclick="" disabled>출근하기</button>
 			<button type="button" class="btn btn-primary me-3" onclick="">퇴근하기</button>
 		</footer>
 	</nav>
