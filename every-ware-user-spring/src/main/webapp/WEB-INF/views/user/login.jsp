@@ -9,7 +9,8 @@
 	<body class="text-center" cz-shortcut-listen="true">
 		<main class="form-signin">
 			<form class="form-signin" action="/user/login" method="post">
-		    <img class="mb-4" src="https://getbootstrap.kr/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57">
+		    <!-- <img class="mb-4" src="https://getbootstrap.kr/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
+			<span class="logo">Every Ware</span>
 		    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
 		
 		    <div class="form-floating">

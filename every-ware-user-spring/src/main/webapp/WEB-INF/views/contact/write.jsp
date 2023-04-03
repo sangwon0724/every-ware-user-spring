@@ -37,7 +37,7 @@
 			</div>
 			<div class="mb-3">
 			  <label for="content" class="form-label">내용</label>
-			  <textarea class="form-control" id="content" name="content" rows="3"></textarea>
+			  <textarea class="form-control" id="summernote" name="editordata"></textarea>
 			</div>
 			<div class="mb-3">
 			  <label for="file" class="form-label">첨부파일</label>
@@ -46,18 +46,38 @@
 			<div class="mb-3">
 				<button type="button" class="btn btn-primary" onclick="save(event)">저장</button>
 			</div>
+			
+			<input type="hidden" id="content" name="content" value=""/>
 		</form>
 	</div>
 </main>
 
 <script>
+	$(document).ready(function(){
+		$('#summernote').summernote({
+			  height: 300,
+			  lang: 'ko-KR',
+			  toolbar: [
+				    // [groupName, [list of button]]
+				    ['style', ['bold', 'italic', 'underline', 'clear']],
+				    ['font', ['strikethrough', 'superscript', 'subscript']],
+				    ['fontsize', ['fontsize']],
+				    ['color', ['color']],
+				    ['para', ['ul', 'ol', 'paragraph']],
+				    ['height', ['height']]
+				],
+				//fontNames: ['Arial', 'Arial Black', 'Comic Sans MS', 'Courier New','맑은 고딕','궁서','굴림체','굴림','돋움체','바탕체'],
+				//fontSizes: ['8','9','10','11','12','14','16','18','20','22','24','28','30','36','50','72']
+		  }); //summernote 종료
+	}); //ready 종료
+
 	/* 저장 */
 	function save(e){
 		event.preventDefault();
 		
 		var title = $("#title").val();
 		var receiver = $("#receiveUserIdx").val();
-		var content = $("#content").val();
+		var content = $('#summernote').summernote('code');
 		
 		if(title == ""){
 			alert("제목을 입력해주세요.");
@@ -71,11 +91,13 @@
 			return;
 		}
 		
-		if(content == ""){
+		if(content == "" || content == "<p><br></p>"){
 			alert("내용을 입력해주세요.");
-			$("#content").focus();
+			//$("#content").focus();
 			return;
 		}
+		
+		$("#content").val(content);
 		
 		$("#form")[0].submit();
 	}

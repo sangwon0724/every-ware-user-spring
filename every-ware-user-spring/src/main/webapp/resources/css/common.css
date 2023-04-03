@@ -50,6 +50,17 @@ body::-webkit-scrollbar {
 	cursor: pointer;
 }
 
+/* 로고 */
+.form-signin > .logo {
+	font-family: 'Allison', cursive;
+	font-weight: bold;
+	font-size: 4em;
+	/* color: #8b008b; */
+	/*color : #a29bfe;*/
+	/*color: black;*/
+	color: #0d6efd !important;
+}
+
 /*============================================================================================================*/
 
 #common_header {
