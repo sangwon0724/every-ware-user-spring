@@ -76,10 +76,35 @@
 
 .dashboard-body .content{
 	width: 80vw;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: space-evenly;
+}
+
+.dashboard-body .content div:has(table.table){
+	width: 35vw;
+	max-width: 30vw;
+	height: fit-content;
+}
+
+.dashboard-body .content table{
+	table-layout: fixed;
+	margin: 0;
+}
+
+.dashboard-body .content div:has(table.table) > header > span {
+	padding-left: 1vw;
+	font-size: 1.2em;
 }
 
 .dashboard-body .content table thead tr{
 	background-color: #f2f2f2;
+}
+
+.dashboard-body .content table tbody tr td{
+      overflow:hidden;
+      text-overflow:ellipsis;
+      white-space:nowrap;
 }
 
 .dashboard-body .content table tbody tr td a{
