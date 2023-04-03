@@ -81,7 +81,7 @@
 	      </div>
 	      <div class="modal-footer">
 	        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">취소</button>
-	        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">출력</button>
+	        <button type="button" class="btn btn-primary" data-bs-dismiss="modal">저장</button>
 	      </div>
 	    </div>
 	  </div>
