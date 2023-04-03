@@ -4,7 +4,7 @@
 
 <main class="container-fluid dashboard-body">
 	<nav class="info_menu">
-		<header class="member_info btn-primary mb-3">
+		<header class="member_info bg-primary mb-3">
 			<div>
 				<span>크림하우스(주)</span>
 				<span>이상원 주임</span>
@@ -28,14 +28,14 @@
 			<span>주간누적 <span style="color: #0d6efd;font-weight: bold;">36h 12m 53s</span></span>
 		</header>
 		<main>
-			<div class="container-md p-3 mt-3 mb-3 border bg-light" style="background: white !important;">
+			<div class="container-md p-3 mt-3 mb-3 border bg-light worktime" style="background: white !important;">
 	        	<div>
-					<span>출근시간</span>
+					<span><strong>출근시간</strong></span>
 					<span>08:52:55</span>
 	        	</div>
-	        	<div><span>→</span></div>
+	        	<div><span><strong>→</strong></span></div>
 	        	<div>
-					<span>퇴근시간</span>
+					<span><strong>퇴근시간</strong></span>
 					<span>-</span>
 	        	</div>
 	        </div>

@@ -7,7 +7,7 @@
 }
 
 .dashboard-body nav.info_menu{
-	width: 20vw;
+	width: 23vw;
 	min-width: 200px;
 	min-height: 25vh;
 	
@@ -27,23 +27,25 @@
 }
 
 .dashboard-body nav.info_menu .member_info div{
-	width: 100%;
+	width: 90%;
 	min-height: 100px;
 	height: 5vh;
+	margin: 0 auto;
 }
 .dashboard-body nav.info_menu .member_info > div:first-child{
-	padding-left: 3vw;
+	padding-left: 2vw;
 	display: flex;
 	flex-direction: column;
 	justify-content: center;
 	align-items: flex-start;
-	
 	color: white;
+	border-bottom: 1px solid white;
 }
 .dashboard-body nav.info_menu .member_info > div:last-child{
 	display: grid;
     grid-template-rows: 1fr;
     grid-template-columns: repeat(3,1fr);
+	border-top: 1px solid white;
 }
 .dashboard-body nav.info_menu .member_info > div:last-child div{
 	display: flex;
@@ -52,6 +54,24 @@
 	align-items: center;
 	
 	color: white;
+}
+
+.dashboard-body nav.info_menu .worktime{
+	display: grid;
+    grid-template-rows: 1fr;
+    grid-template-columns: 1fr 20px 1fr;
+}
+.dashboard-body nav.info_menu .worktime > div{
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;	
+}
+
+.dashboard-body nav.info_menu > footer{
+	display: flex;
+	justify-content: space-evenly;
+	align-items: center;	
 }
 
 .dashboard-body .content{
