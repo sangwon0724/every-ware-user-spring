@@ -11,7 +11,7 @@
 			<form class="form-signin" action="/user/login" method="post">
 		    <!-- <img class="mb-4" src="https://getbootstrap.kr/docs/5.0/assets/brand/bootstrap-logo.svg" alt="" width="72" height="57"> -->
 			<span class="logo">Every Ware</span>
-		    <h1 class="h3 mb-3 fw-normal">Please sign in</h1>
+		    <!-- <h1 class="h3 mb-3 fw-normal">Please sign in</h1> -->
 		
 		    <div class="form-floating">
 		      <input type="text" class="form-control" id="floatingInput" name="id" placeholder="name@example.com">
@@ -27,7 +27,7 @@
 		        <input type="checkbox" value="remember-me"> Remember me
 		      </label>
 		    </div>
-		    <button class="w-100 btn btn-lg btn-primary" type="submit">Sign in</button>
+		    <button class="w-100 btn btn-lg btn-primary" type="submit">로그인</button>
 		    <!-- <p class="mt-5 mb-3 text-muted">© 2017–2021</p> -->
 		  </form>
 		</main>
